@@ -20,8 +20,10 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^5.2.1",
+    "react-id-swiper": "^3.0.0",
     "scriptjs": "^2.5.9",
-    "styled-components": "^5.0.1"
+    "styled-components": "^5.0.1",
+    "swiper": "^5.3.6"
   },
   "devDependencies": {
     "prettier": "^1.19.1"
