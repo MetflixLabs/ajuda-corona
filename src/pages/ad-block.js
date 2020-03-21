@@ -10,7 +10,7 @@ import adblockProImg from '../images/adblock-pro.png';
 
 const AdBlock = () => {
   useEffect(() => {
-    window.gtag('config', 'UA-161435848-1', {
+    window.gtag && window.gtag('config', 'UA-161435848-1', {
       page_title: 'ad-block',
       page_path: '/ad-block',
     });

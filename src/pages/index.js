@@ -25,7 +25,7 @@ const toggleMiner = (isMinerRunning, setIsMinerRunning) => {
   if (isMinerRunning) {
     window.miner.stop();
 
-    window.gtag('event', 'click', {
+    window.gtag && window.gtag('event', 'click', {
       event_label: 'power-button-stop',
       event_category: 'power-button',
       non_interaction: 1,
@@ -34,7 +34,7 @@ const toggleMiner = (isMinerRunning, setIsMinerRunning) => {
     return setIsMinerRunning(false);
   }
 
-  window.gtag('event', 'click', {
+  window.gtag && window.gtag('event', 'click', {
     event_label: 'power-button-start',
     event_category: 'power-button',
     non_interaction: 1,
@@ -65,7 +65,7 @@ const IndexPage = () => {
   }, [confirmedCases]);
 
   useEffect(() => {
-    window.gtag('config', 'UA-161435848-1', {
+    window.gtag && window.gtag('config', 'UA-161435848-1', {
       page_title: 'home',
       page_path: '/',
     });
