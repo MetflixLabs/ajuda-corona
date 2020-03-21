@@ -98,12 +98,14 @@ const IndexPage = () => {
             </ControlWrapper>
             <StatusWrapper>
               <StatusInnerWrapper>
-                <Card
+                <BottomTitle>Status</BottomTitle>
+                <CardsWrapper>
+                  <Card
                   title="Força"
                   description={isMinerRunning ? `${currentThrottle}%` : '-'}
                   isPurple
                 ></Card>
-                <Card
+                  <Card
                   title="Tempo"
                   description={
                     isMinerRunning ? (
@@ -124,6 +126,7 @@ const IndexPage = () => {
                   }
                   isPurple
                 ></Card>
+                </CardsWrapper>
               </StatusInnerWrapper>
             </StatusWrapper>
           </BottomInnerWrapper>
@@ -208,11 +211,14 @@ const BottomInnerWrapper = styled.div`
 const ControlWrapper = styled.div``;
 const StatusWrapper = styled.div`
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const StatusInnerWrapper = styled.div`
-  display: flex;
-  justify-content: space-evenly;
+  width: 460px;
+  max-width: 100%;
 `;
 
 const BottomTitle = styled.div`
