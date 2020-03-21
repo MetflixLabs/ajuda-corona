@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `Ajuda Corona`,
+    description: `Minere criptomoedas que serão doadas na causa contra a COVID-19.`,
+    author: `@MetflixLabs`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -36,30 +36,14 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: `gatsby-plugin-gtag`,
       options: {
-        // The property ID; the tracking code won't be generated without it
-        trackingId: 'UA-161435848-1',
-        // Defines where to place the tracking script - `true` in the head and `false` in the body
+        // your google analytics tracking id
+        trackingId: `UA-161435848-1`,
+        // Puts tracking script in the head instead of the body
         head: false,
-        // Setting this parameter is optional
+        // enable ip anonymization
         anonymize: true,
-        // Setting this parameter is also optional
-        respectDNT: true,
-        // Avoids sending pageview hits from custom paths
-        exclude: ['/preview/**', '/do-not-track/me/too/'],
-        // Delays sending pageview hits on route update (in milliseconds)
-        pageTransitionDelay: 0,
-        // Enables Google Optimize using your container Id
-        optimizeId: 'YOUR_GOOGLE_OPTIMIZE_TRACKING_ID',
-        // Enables Google Optimize Experiment ID
-        experimentId: 'YOUR_GOOGLE_EXPERIMENT_ID',
-        // Set Variation ID. 0 for original 1,2,3....
-        variationId: 'YOUR_GOOGLE_OPTIMIZE_VARIATION_ID',
-        // Any additional optional fields
-        sampleRate: 5,
-        siteSpeedSampleRate: 10,
-        cookieDomain: 'example.com',
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality

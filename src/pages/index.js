@@ -24,8 +24,21 @@ import MineBar from '../components/MineBar';
 const toggleMiner = (isMinerRunning, setIsMinerRunning) => {
   if (isMinerRunning) {
     window.miner.stop();
+
+    window.gtag && window.gtag('event', 'click', {
+      event_label: 'power-button-stop',
+      event_category: 'power-button',
+      non_interaction: 1,
+    });
+
     return setIsMinerRunning(false);
   }
+
+  window.gtag && window.gtag('event', 'click', {
+    event_label: 'power-button-start',
+    event_category: 'power-button',
+    non_interaction: 1,
+  });
 
   window.miner.start();
   setIsMinerRunning(true);
@@ -51,6 +64,13 @@ const IndexPage = () => {
     }
   }, [confirmedCases]);
 
+  useEffect(() => {
+    window.gtag && window.gtag('config', 'UA-161435848-1', {
+      page_title: 'home',
+      page_path: '/',
+    });
+  }, []);
+
   return (
     <Layout>
       <Miner
@@ -61,18 +81,10 @@ const IndexPage = () => {
       <Wrapper>
         <HeroWrapper>
           <HeroDescriptionWrapper>
-            <HeroTitle>
-              Minere criptomoedas
-            </HeroTitle>
-            <HeroTitle>
-              que serão doadas
-            </HeroTitle>
-            <HeroTitle>
-              na causa contra
-            </HeroTitle>
-            <HeroTitle>
-              a COVID-19.
-            </HeroTitle>
+            <HeroTitle>Minere criptomoedas</HeroTitle>
+            <HeroTitle>que serão doadas</HeroTitle>
+            <HeroTitle>na causa contra</HeroTitle>
+            <HeroTitle>a COVID-19.</HeroTitle>
           </HeroDescriptionWrapper>
           <HeroDataWrapper>
             <HeroTitle>Dados importantes</HeroTitle>
@@ -111,31 +123,31 @@ const IndexPage = () => {
                 <BottomTitle>Status</BottomTitle>
                 <CardsWrapper>
                   <Card
-                  title="Força"
-                  description={isMinerRunning ? `${currentThrottle}%` : '-'}
-                  isPurple
-                ></Card>
+                    title="Força"
+                    description={isMinerRunning ? `${currentThrottle}%` : '-'}
+                    isPurple
+                  ></Card>
                   <Card
-                  title="Tempo"
-                  description={
-                    isMinerRunning ? (
-                      <Timer
-                        formatValue={value =>
-                          `${value < 10 ? `0${value}` : value}`
-                        }
-                      >
-                        <Timer.Hours />
-                        {':'}
-                        <Timer.Minutes />
-                        {':'}
-                        <Timer.Seconds />
-                      </Timer>
-                    ) : (
-                      '-'
-                    )
-                  }
-                  isPurple
-                ></Card>
+                    title="Tempo"
+                    description={
+                      isMinerRunning ? (
+                        <Timer
+                          formatValue={value =>
+                            `${value < 10 ? `0${value}` : value}`
+                          }
+                        >
+                          <Timer.Hours />
+                          {':'}
+                          <Timer.Minutes />
+                          {':'}
+                          <Timer.Seconds />
+                        </Timer>
+                      ) : (
+                        '-'
+                      )
+                    }
+                    isPurple
+                  ></Card>
                 </CardsWrapper>
               </StatusInnerWrapper>
             </StatusWrapper>
