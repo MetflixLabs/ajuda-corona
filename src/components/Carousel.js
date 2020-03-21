@@ -1,20 +1,48 @@
 import React from 'react'
 import Swiper from 'react-id-swiper';
-import Card from '../components/Card'
-
 import 'swiper/css/swiper.css';
 
-export default () => (
-	<Swiper>
-		<Card
-			title={confirmedCases}
-			description="Casos no Brasil"
-			isInfo
-		></Card>
-		<Card
-			title={moment().diff('2020-03-21', 'hours')}
-			description="Horas online"
-			isInfo
-		></Card>
-	</Swiper>
-)
+import { sizes } from '../components/utils/media';
+
+import Card from '../components/Card'
+
+const breakpoints = () => {
+	const breakpoints = []
+	for (let b in sizes) {
+		breakpoints.push(sizes[b][1])
+	}
+	return breakpoints
+}
+
+export default ({ data }) => {
+	const { confirmedCases, hours } = data
+
+	const params = {
+		slidesPerView: 2,
+	}
+
+	return (
+		<Swiper {...params}>
+			<Card
+				title={confirmedCases}
+				description="Casos no Brasil"
+				isInfo
+			/>
+			<Card
+				title={hours}
+				description="Horas online"
+				isInfo
+			/>
+			<Card
+				title={'344'}
+				description="Máscaras garantidas"
+				isInfo
+			/>
+			<Card
+				title={'5L'}
+				description="De álcool gel"
+				isInfo
+			/>
+		</Swiper>
+	)
+}
