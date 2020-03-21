@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 import Timer from 'react-compound-timer';
+import moment from 'moment';
 // import Swiper from 'react-id-swiper';
 // import 'swiper/css/swiper.css';
 
@@ -33,8 +35,23 @@ const toggleMiner = (isMinerRunning, setIsMinerRunning) => {
 
 const IndexPage = () => {
   const [isMinerReady, setIsMinerReady] = useState(false);
+  const [confirmedCases, setconfirmedCases] = useState(null);
   const [isMinerRunning, setIsMinerRunning] = useState(false);
   const [currentThrottle, setCurrentThrottle] = useState(0);
+
+  useEffect(() => {
+    if (!confirmedCases) {
+      setconfirmedCases('-');
+
+      axios
+        .get('//coronavirus-tracker-api.herokuapp.com/v2/locations/35')
+        .then(res => {
+          const { confirmed } = res.data.location.latest;
+          setconfirmedCases(confirmed);
+        })
+        .catch(err => err);
+    }
+  }, [confirmedCases]);
 
   return (
     <Layout>
@@ -51,8 +68,11 @@ const IndexPage = () => {
           <HeroDataWrapper>
             <HeroTitle>Dados importantes</HeroTitle>
             <CardsWrapper>
-              <Card title="2255" description="Doadores online"></Card>
-              <Card title="1350" description="Horas doadas"></Card>
+              <Card title={confirmedCases} description="Casos no Brasil"></Card>
+              <Card
+                title={moment().diff('2020-03-21', 'hours')}
+                description="Horas online"
+              ></Card>
             </CardsWrapper>
           </HeroDataWrapper>
         </HeroWrapper>
