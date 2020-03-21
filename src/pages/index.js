@@ -68,10 +68,15 @@ const IndexPage = () => {
           <HeroDataWrapper>
             <HeroTitle>Dados importantes</HeroTitle>
             <CardsWrapper>
-              <Card title={confirmedCases} description="Casos no Brasil"></Card>
+              <Card
+                title={confirmedCases}
+                description="Casos no Brasil"
+                isInfo
+              ></Card>
               <Card
                 title={moment().diff('2020-03-21', 'hours')}
                 description="Horas online"
+                isInfo
               ></Card>
             </CardsWrapper>
           </HeroDataWrapper>
@@ -153,7 +158,7 @@ const HeroDescriptionWrapper = styled.div`
   font-weight: bold;
   font-size: 38px;
   line-height: 56px;
-  max-width: 460px;
+  max-width: 360px;
 `;
 
 const HeroDataWrapper = styled.div`

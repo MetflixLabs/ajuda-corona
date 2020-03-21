@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import media from '../components/utils/media';
 import colors from '../components/utils/colors';
 
-const Card = ({ title, description, isPurple }) => (
-  <Wrapper isPurple={isPurple}>
+const Card = ({ title, description, isPurple, isInfo }) => (
+  <Wrapper isPurple={isPurple} isInfo={isInfo}>
     <CardTitle isPurple={isPurple}>{title}</CardTitle>
     <CardDescription isPurple={isPurple}>{description}</CardDescription>
   </Wrapper>
@@ -14,7 +14,7 @@ const Card = ({ title, description, isPurple }) => (
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: ${props => props.isInfo ? 'flex-start' : 'center'};
   max-width: ${props => (props.isPurple ? '500px' : '285px')};
   min-width: 205px;
   min-height: 185px;
