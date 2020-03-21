@@ -63,7 +63,7 @@ const IndexPage = () => {
       <Wrapper>
         <HeroWrapper>
           <HeroDescriptionWrapper>
-            Minere criptomoedas que serão doadas na causa contra o COVID-19.
+            Minere criptomoedas que serão doadas na causa contra a COVID-19.
           </HeroDescriptionWrapper>
           <HeroDataWrapper>
             <HeroTitle>Dados importantes</HeroTitle>
