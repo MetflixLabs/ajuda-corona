@@ -1,0 +1,9 @@
+{
+  "extends": "react-app",
+  "rules": {
+    "no-console": "error",
+    "jsx-a11y/img-redundant-alt": 0,
+    "jsx-a11y/alt-text": 0,
+    "react-hooks/exhaustive-deps": 0
+  }
+}

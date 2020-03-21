@@ -1,21 +1,38 @@
-import React from "react"
-import { Link } from "gatsby"
+import React from 'react';
+import styled from 'styled-components';
 
-import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
+import Miner from '../components/core/Miner';
+import media from '../components/utils/media';
+import Layout from '../components/layout';
+import SEO from '../components/seo';
 
 const IndexPage = () => (
   <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
+    <Miner />
+    <SEO title="Ajuda Corona - @MetflixLabs" /> 
+    <ContentWrapper>
+      ajuda coronavírus
+    </ContentWrapper>
   </Layout>
-)
+);
 
-export default IndexPage
+const ContentWrapper = styled.div`
+  z-index: 2;
+  position: relative;
+  display: block;
+  padding-top: 300px;
+  max-width: 675px;
+  margin: 0 10px;
+  color: #CECECE;
+  ${media.tablet`
+    margin: auto;
+  `};
+  ${media.desktop`    
+    max-width: 915px;
+  `};
+  ${media.large`
+    max-width: 1075px;
+  `};
+`;
+
+export default IndexPage;
