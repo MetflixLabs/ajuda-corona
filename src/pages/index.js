@@ -51,8 +51,8 @@ const IndexPage = () => {
           <HeroDataWrapper>
             <HeroTitle>Dados importantes</HeroTitle>
             <CardsWrapper>
-              <Card title="2255" description="Doadores online"></Card>
-              <Card title="1350" description="Horas doadas"></Card>
+              <Card title="2255" description="Doadores online" isInfo></Card>
+              <Card title="1350" description="Horas doadas" isInfo></Card>
             </CardsWrapper>
           </HeroDataWrapper>
         </HeroWrapper>
