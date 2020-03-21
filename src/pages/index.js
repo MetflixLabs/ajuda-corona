@@ -3,8 +3,6 @@ import styled from 'styled-components';
 import axios from 'axios';
 import Timer from 'react-compound-timer';
 import moment from 'moment';
-// import Swiper from 'react-id-swiper';
-// import 'swiper/css/swiper.css';
 
 import powerButtonIcon from '../images/icons/powerButton.svg';
 import loadingIcon from '../images/icons/loading.svg';
@@ -63,7 +61,18 @@ const IndexPage = () => {
       <Wrapper>
         <HeroWrapper>
           <HeroDescriptionWrapper>
-            Minere criptomoedas que serão doadas na causa contra a COVID-19.
+            <HeroTitle>
+              Minere criptomoedas
+            </HeroTitle>
+            <HeroTitle>
+              que serão doadas
+            </HeroTitle>
+            <HeroTitle>
+              na causa contra
+            </HeroTitle>
+            <HeroTitle>
+              a COVID-19.
+            </HeroTitle>
           </HeroDescriptionWrapper>
           <HeroDataWrapper>
             <HeroTitle>Dados importantes</HeroTitle>
