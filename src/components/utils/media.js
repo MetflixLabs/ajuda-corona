@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 
-const sizes = {
+export const sizes = {
   reallySmall: ['max', 380],
   phoneLandscape: ['min', 576],
   tablet: ['min', 768],
