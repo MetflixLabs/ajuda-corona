@@ -8,11 +8,11 @@ import powerButtonIcon from '../images/icons/powerButton.svg';
 import loadingIcon from '../images/icons/loading.svg';
 
 import Miner from '../components/core/Miner';
-import media from '../components/utils/media';
 import colors from '../components/utils/colors';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import Card from '../components/Card';
+import Carousel from '../components/Carousel'
 import MineBar from '../components/MineBar';
 
 // const swiperParams = {
@@ -77,16 +77,17 @@ const IndexPage = () => {
           <HeroDataWrapper>
             <HeroTitle>Dados importantes</HeroTitle>
             <CardsWrapper>
-              <Card
+              <Carousel data={{confirmedCases, hours: moment().diff('2020-03-21', 'hours')}} />
+              {/* <Card
                 title={confirmedCases}
                 description="Casos no Brasil"
                 isInfo
               ></Card>
               <Card
-                title={moment().diff('2020-03-21', 'hours')}
+                title={}
                 description="Horas online"
                 isInfo
-              ></Card>
+              ></Card> */}
             </CardsWrapper>
           </HeroDataWrapper>
         </HeroWrapper>
