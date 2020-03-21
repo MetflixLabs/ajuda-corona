@@ -10,8 +10,6 @@ import PropTypes from 'prop-types';
 // import { useStaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
 
-import Miner from './core/Miner';
-
 // import Header from './header';
 import './layout.css';
 
@@ -28,7 +26,6 @@ const Layout = ({ children }) => {
 
   return (
     <LayoutWrapper>
-      <Miner />
       {/* <Header siteTitle={data.site.siteMetadata.title} /> */}
       {children}
     </LayoutWrapper>

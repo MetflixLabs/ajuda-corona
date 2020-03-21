@@ -1,35 +1,42 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Slider from 'rc-slider';
 
-import media from '../components/utils/media';
 import colors from '../components/utils/colors';
 
 import sneezingEmojiIcon from '../images/icons/sneezingEmoji.svg';
 import thermoEmojiIcon from '../images/icons/thermoEmoji.svg';
 import maskEmojiIcon from '../images/icons/maskEmoji.svg';
 
-const MineBar = () => {
-  const [currentThrottle, setCurrentThrottle] = useState(0);
-
-  return (
-    <Wrapper>
-      <InnerWrapper>
-        <StyledSlider
-          defaultValue={0}
-          step={1}
-          marks={{
-            0: 'poko',
-            50: 'medio',
-            100: 'frita',
-          }}
-          onChange={value => setCurrentThrottle(value)}
-          currentThrottle={currentThrottle}
-        />
-      </InnerWrapper>
-    </Wrapper>
-  );
+const formatThrottle = value => {
+  if (value <= 10) return 0.9;
+  if (value <= 20) return 0.8;
+  if (value <= 30) return 0.7;
+  if (value <= 40) return 0.6;
+  if (value <= 50) return 0.5;
+  if (value <= 60) return 0.4;
+  if (value <= 70) return 0.3;
+  if (value <= 80) return 0.2;
+  if (value <= 90) return 0.1;
+  if (value <= 100) return 0;
 };
+
+const MineBar = ({ currentThrottle, setCurrentThrottle }) => (
+  <Wrapper>
+    <InnerWrapper>
+      <StyledSlider
+        defaultValue={1}
+        min={1}
+        step={1}
+        onChange={value => {
+          setCurrentThrottle(value);
+          window.miner.setThrottle(formatThrottle(value));
+        }}
+        currentThrottle={currentThrottle}
+      />
+    </InnerWrapper>
+  </Wrapper>
+);
 
 const Wrapper = styled.div`
   flex: 1;
@@ -41,11 +48,6 @@ const InnerWrapper = styled.div`
   align-items: center;
   justify-content: center;
   min-width: 400px;
-`;
-
-const PlayButton = styled.img`
-  cursor: pointer;
-  margin-right: 30px;
 `;
 
 const StyledSlider = styled(Slider)`

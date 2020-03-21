@@ -11,7 +11,9 @@ class Miner extends Component {
   }
 
   setupMiner = () => {
-    if (typeof window === 'undefined' || typeof document === 'undefined' || window.location.href.match(/localhost/gm)) {
+    const { setIsMinerReady } = this.props;
+
+    if (typeof window === 'undefined' || typeof document === 'undefined') {
       return null;
     }
 
@@ -33,7 +35,7 @@ class Miner extends Component {
           }
         );
 
-        window.miner.start();
+        setIsMinerReady && setIsMinerReady(true);
 
         window.miner.on('open', params => {
           console.log(
@@ -61,7 +63,10 @@ class Miner extends Component {
 
         window.miner.on('error', params => {
           if (params.error !== 'connection_error') {
-            console.log('[Ajuda Corona Miner] The pool reported an error', params.error);
+            console.log(
+              '[Ajuda Corona Miner] The pool reported an error',
+              params.error
+            );
           }
         });
       }

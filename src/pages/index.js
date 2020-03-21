@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import Timer from 'react-compound-timer';
 // import Swiper from 'react-id-swiper';
 // import 'swiper/css/swiper.css';
 
 import powerButtonIcon from '../images/icons/powerButton.svg';
+import loadingIcon from '../images/icons/loading.svg';
 
+import Miner from '../components/core/Miner';
 import media from '../components/utils/media';
 import colors from '../components/utils/colors';
 import Layout from '../components/layout';
@@ -18,46 +21,101 @@ import MineBar from '../components/MineBar';
 //   centeredSlides: true,
 // };
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Ajuda Corona - @MetflixLabs" />
-    <Wrapper>
-      <HeroWrapper>
-        <HeroDescriptionWrapper>
-          Minere criptomoedas que serão doadas na causa contra o Covid-19
-        </HeroDescriptionWrapper>
-        <HeroDataWrapper>
-          <HeroTitle>Dados importantes</HeroTitle>
-          <CardsWrapper>
-            <Card title="2255" description="Doadores online"></Card>
-            <Card title="1350" description="Horas doadas"></Card>
-          </CardsWrapper>
-        </HeroDataWrapper>
-      </HeroWrapper>
-      <BottomWrapper>
-        <BottomInnerWrapper>
-          <ControlWrapper>
-            <BottomTitle>Controle</BottomTitle>
-            <Card
-              title="Nível da sua contribuição"
-              description={<MineBar />}
-              isPurple
-            ></Card>
-          </ControlWrapper>
-          <StatusWrapper>
-            <StatusInnerWrapper>
-              <Card title="Força" description="100%" isPurple></Card>
-              <Card title="Tempo" description="192h" isPurple></Card>
-            </StatusInnerWrapper>
-          </StatusWrapper>
-        </BottomInnerWrapper>
-        <PowerWrapper>
-          <PowerButton src={powerButtonIcon} />
-        </PowerWrapper>
-      </BottomWrapper>
-    </Wrapper>
-  </Layout>
-);
+const toggleMiner = (isMinerRunning, setIsMinerRunning) => {
+  if (isMinerRunning) {
+    window.miner.stop();
+    return setIsMinerRunning(false);
+  }
+
+  window.miner.start();
+  setIsMinerRunning(true);
+};
+
+const IndexPage = () => {
+  const [isMinerReady, setIsMinerReady] = useState(false);
+  const [isMinerRunning, setIsMinerRunning] = useState(false);
+  const [currentThrottle, setCurrentThrottle] = useState(0);
+
+  return (
+    <Layout>
+      <Miner
+        setIsMinerReady={setIsMinerReady}
+        currentThrottle={currentThrottle}
+      />
+      <SEO title="Ajuda Corona - @MetflixLabs" />
+      <Wrapper>
+        <HeroWrapper>
+          <HeroDescriptionWrapper>
+            Minere criptomoedas que serão doadas na causa contra o COVID-19.
+          </HeroDescriptionWrapper>
+          <HeroDataWrapper>
+            <HeroTitle>Dados importantes</HeroTitle>
+            <CardsWrapper>
+              <Card title="2255" description="Doadores online"></Card>
+              <Card title="1350" description="Horas doadas"></Card>
+            </CardsWrapper>
+          </HeroDataWrapper>
+        </HeroWrapper>
+        <BottomWrapper>
+          <BottomInnerWrapper>
+            <ControlWrapper>
+              <BottomTitle>Controle</BottomTitle>
+              <Card
+                title="Nível da sua contribuição"
+                description={
+                  <MineBar
+                    currentThrottle={currentThrottle}
+                    setCurrentThrottle={setCurrentThrottle}
+                  />
+                }
+                isPurple
+              ></Card>
+            </ControlWrapper>
+            <StatusWrapper>
+              <StatusInnerWrapper>
+                <Card
+                  title="Força"
+                  description={isMinerRunning ? `${currentThrottle}%` : '-'}
+                  isPurple
+                ></Card>
+                <Card
+                  title="Tempo"
+                  description={
+                    isMinerRunning ? (
+                      <Timer
+                        formatValue={value =>
+                          `${value < 10 ? `0${value}` : value}`
+                        }
+                      >
+                        <Timer.Hours />
+                        {':'}
+                        <Timer.Minutes />
+                        {':'}
+                        <Timer.Seconds />
+                      </Timer>
+                    ) : (
+                      '-'
+                    )
+                  }
+                  isPurple
+                ></Card>
+              </StatusInnerWrapper>
+            </StatusWrapper>
+          </BottomInnerWrapper>
+          <PowerWrapper>
+            <PowerButton
+              onClick={() =>
+                isMinerReady && toggleMiner(isMinerRunning, setIsMinerRunning)
+              }
+              src={isMinerReady ? powerButtonIcon : loadingIcon}
+              isMinerRunning={isMinerRunning}
+            />
+          </PowerWrapper>
+        </BottomWrapper>
+      </Wrapper>
+    </Layout>
+  );
+};
 
 const Wrapper = styled.div`
   background: ${colors.lightGray};
@@ -148,6 +206,7 @@ const PowerWrapper = styled.div`
 
 const PowerButton = styled.img`
   cursor: pointer;
+  opacity: ${props => (props.isMinerRunning ? '0.2' : '1')};
 `;
 
 export default IndexPage;
