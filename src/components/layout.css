@@ -611,3 +611,7 @@ pre tt:after {
     font-size: 100%;
   }
 }
+
+::-webkit-scrollbar {
+  display: none;
+}
