@@ -48,7 +48,7 @@ const IndexPage = () => {
   const [isMinerReady, setIsMinerReady] = useState(false);
   const [confirmedCases, setconfirmedCases] = useState(null);
   const [isMinerRunning, setIsMinerRunning] = useState(false);
-  const [currentThrottle, setCurrentThrottle] = useState(0);
+  const [currentThrottle, setCurrentThrottle] = useState(1);
 
   useEffect(() => {
     if (!confirmedCases) {
