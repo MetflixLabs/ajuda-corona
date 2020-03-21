@@ -3,8 +3,6 @@ import styled from 'styled-components';
 import axios from 'axios';
 import Timer from 'react-compound-timer';
 import moment from 'moment';
-// import Swiper from 'react-id-swiper';
-// import 'swiper/css/swiper.css';
 
 import powerButtonIcon from '../images/icons/powerButton.svg';
 import loadingIcon from '../images/icons/loading.svg';
