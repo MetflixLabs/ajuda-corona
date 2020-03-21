@@ -24,8 +24,12 @@ import MineBar from '../components/MineBar';
 const toggleMiner = (isMinerRunning, setIsMinerRunning) => {
   if (isMinerRunning) {
     window.miner.stop();
+    window.ga('send', 'event', 'Buttons', 'click', 'power-button', 'stop');
+
     return setIsMinerRunning(false);
   }
+
+  window.ga('send', 'event', 'Buttons', 'click', 'power-button', 'start');
 
   window.miner.start();
   setIsMinerRunning(true);
