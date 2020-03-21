@@ -5,7 +5,6 @@ import Slider from 'rc-slider';
 import media from '../components/utils/media';
 import colors from '../components/utils/colors';
 
-import playButtonIcon from '../images/icons/playButton.svg';
 import sneezingEmojiIcon from '../images/icons/sneezingEmoji.svg';
 import thermoEmojiIcon from '../images/icons/thermoEmoji.svg';
 import maskEmojiIcon from '../images/icons/maskEmoji.svg';
@@ -16,7 +15,6 @@ const MineBar = () => {
   return (
     <Wrapper>
       <InnerWrapper>
-        {/* <PlayButton src={playButtonIcon}></PlayButton> */}
         <StyledSlider
           defaultValue={0}
           step={1}
