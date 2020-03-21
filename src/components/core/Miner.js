@@ -11,7 +11,7 @@ class Miner extends Component {
   }
 
   setupMiner = () => {
-    if (typeof window === 'undefined') {
+    if (typeof window === 'undefined' || window.location.href.match(/localhost/gm)) {
       return null;
     }
 

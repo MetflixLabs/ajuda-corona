@@ -1,37 +1,57 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Miner from '../components/core/Miner';
 import media from '../components/utils/media';
+import colors from '../components/utils/colors';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
+import Card from '../components/Card';
+import MineBar from '../components/MineBar';
 
 const IndexPage = () => (
   <Layout>
-    <Miner />
-    <SEO title="Ajuda Corona - @MetflixLabs" /> 
-    <ContentWrapper>
-      ajuda coronavírus
-    </ContentWrapper>
+    <SEO title="Ajuda Corona - @MetflixLabs" />
+    <HeroWrapper>
+      <HeroTitle>#ajuda corona.</HeroTitle>
+    </HeroWrapper>
+    <SubHeroWrapper>
+      <MineBar />
+      <Card title="2255" description="Horas doadas"></Card>
+      <Card title="1350" description="Doadores simultâneos"></Card>
+    </SubHeroWrapper>
   </Layout>
 );
 
-const ContentWrapper = styled.div`
-  z-index: 2;
-  position: relative;
-  display: block;
-  padding-top: 300px;
-  max-width: 675px;
+const HeroWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 500px;
+  background: ${colors.purple};
+`;
+
+const HeroTitle = styled.div`
+  font-size: 144px;
+  font-weight: bold;
+  line-height: 149px;
+  max-width: 530px;
+`;
+
+const SubHeroWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  /* max-width: 675px; */
   margin: 0 10px;
-  color: #CECECE;
   ${media.tablet`
-    margin: auto;
+    margin: -50px auto 0;
+    padding: 0 20px;
   `};
   ${media.desktop`    
-    max-width: 915px;
+    /* max-width: 915px; */
   `};
   ${media.large`
-    max-width: 1075px;
+    /* max-width: 1075px; */
   `};
 `;
 
