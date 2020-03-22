@@ -19,8 +19,8 @@ import MineBar from '../components/MineBar';
 
 const socketURL =
   typeof window !== 'undefined' && !!window.location.href.match(/localhost/gi)
-    ? 'http://localhost:3000'
-    : 'https://ajudacorona-api.xyz';
+    ? 'http://localhost:5000'
+    : 'https://gretchenless-cloud.xyz/corona';
 
 const socket = io.connect(socketURL);
 
