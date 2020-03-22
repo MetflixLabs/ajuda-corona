@@ -19,6 +19,10 @@ export default ({ data }) => {
 
 	const params = {
 		slidesPerView: 2,
+		autoplay: {
+			delay: 2500,
+			disableOnInteraction: false
+		},
 	}
 
 	return (
