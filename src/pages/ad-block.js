@@ -23,11 +23,11 @@ const AdBlock = () => {
         <TextWrapper>
           <BigText>Seu AdBlock está ligado :(</BigText>
           <Text>
-            Bloqueadores de anuncio não permitem mineiração de cryptomoedas.
+            Bloqueadores de anuncio não permitem mineração de criptomoedas.
           </Text>
           <Content>
             <Description>
-              Mas calma! Você não precisa remover o seu AdBlock, apenas permitir
+              Mas calma! Você não precisa remover o seu AdBlock - apenas permita
               que ele não bloqueie a sua doação.
             </Description>
             <AdBlockWrapper>
