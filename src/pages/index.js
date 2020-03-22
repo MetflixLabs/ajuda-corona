@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { navigate } from 'gatsby';
 import styled from 'styled-components';
 import axios from 'axios';
 import Timer from 'react-compound-timer';
@@ -23,7 +24,11 @@ const socketURL =
 
 const socket = io.connect(socketURL);
 
-const toggleMiner = (isMinerRunning, setIsMinerRunning) => {
+const toggleMiner = (isAdblocked, isMinerRunning, setIsMinerRunning) => {
+  if (isAdblocked) {
+    return navigate('/ad-block');
+  }
+
   if (isMinerRunning) {
     window.miner.stop();
 
@@ -49,6 +54,7 @@ const toggleMiner = (isMinerRunning, setIsMinerRunning) => {
 };
 
 const IndexPage = () => {
+  const [isAdblocked, setIsAdblocked] = useState(false);
   const [isMinerReady, setIsMinerReady] = useState(false);
   const [brazilData, setBrazilData] = useState(null);
   const [isMinerRunning, setIsMinerRunning] = useState(false);
@@ -87,6 +93,7 @@ const IndexPage = () => {
     <Layout>
       <Miner
         setIsMinerReady={setIsMinerReady}
+        setIsAdblocked={setIsAdblocked}
         currentThrottle={currentThrottle}
       />
       <SEO title="Ajuda Corona - @MetflixLabs" />
@@ -161,7 +168,8 @@ const IndexPage = () => {
           <PowerWrapper>
             <PowerButton
               onClick={() =>
-                isMinerReady && toggleMiner(isMinerRunning, setIsMinerRunning)
+                isMinerReady &&
+                toggleMiner(isAdblocked, isMinerRunning, setIsMinerRunning)
               }
               src={isMinerReady ? powerButtonIcon : loadingIcon}
               isMinerRunning={isMinerRunning}

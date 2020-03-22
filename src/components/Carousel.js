@@ -15,7 +15,7 @@ export default ({ brazilData, hours, serverData }) => {
       <Card title={balance} description="Total arrecadado" fontSize={'28px'} />
       <Card
         title={onlineUsers}
-        description={onlineUsers === 1 ? 'Usuário online' : 'Usuários online'}
+        description={onlineUsers === 1 ? 'Doador online' : 'Doadores online'}
         fontSize={'52px'}
       />
       <Card
