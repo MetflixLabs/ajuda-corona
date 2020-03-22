@@ -7,14 +7,20 @@ import Card from '../components/Card';
 
 import arrowIcon from '../images/icons/arrow.svg';
 
-export default ({ confirmedCases, hours }) => (
-  <SCarousel
-    dragging
-    slidesToShow={2}
-    cellSpacing={10}
-    slidesToScroll={1}
-  >
-    <Card title={confirmedCases} description="Casos no Brasil" />
+export default ({ brazilData, hours }) => (
+  <SCarousel dragging slidesToShow={2} cellSpacing={10} slidesToScroll={1}>
+    <Card
+      title={brazilData ? brazilData.confirmed : '-'}
+      description="Casos no Brasil"
+    />
+    <Card
+      title={brazilData ? brazilData.deaths : '-'}
+      description="Mortes no Brasil"
+    />
+    <Card
+      title={brazilData ? brazilData.recovered : '-'}
+      description="Curados no Brasil"
+    />
     <Card title={hours} description="Horas online" />
     {/* <Card title={'344'} description="Máscaras garantidas" />
     <Card title={'5L'} description="De álcool gel" /> */}
