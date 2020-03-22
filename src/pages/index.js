@@ -175,6 +175,58 @@ const IndexPage = () => {
               isMinerRunning={isMinerRunning}
             />
           </PowerWrapper>
+          <BottomBlockWrapper>
+            <BottomTitle>Como funciona</BottomTitle>
+            <BottomParagraph>
+              Visando ajudar de alguma forma na pandemia da COVID-19, nós da{' '}
+              <a
+                href="https://twitter.com/MetflixLabs"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                @MetflixLabs
+              </a>{' '}
+              desenvolvemos esse website. Ao clicar no botão "power", você
+              estará emprestando um pouco do poder de procesamento do seu
+              computador, gerando assim o processo de "mineração" de uma
+              criptomoeda (
+              <a
+                href="https://cointimes.com.br/como-minerar-bitcoin/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                confira um artigo que explica melhor esse conceito)
+              </a>
+              .
+            </BottomParagraph>
+            <BottomParagraph>
+              É importante ressaltar que você não vai receber nada em troca por
+              isso (e nem nós). Vamos doar integralmente todo o valor arrecadado
+              para instituições que possam agir com recursos para o combate da
+              COVID-19.
+            </BottomParagraph>
+            <BottomParagraph>
+              Se você é o representante de alguma instituição ou representante
+              do governo, por favor entre em contato com a gente atráves de uma{' '}
+              <a
+                href="https://twitter.com/messages/compose?recipient_id=1132804885978734593&text=Sou%20um%20representante%20e%20quero%20ajudar"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                mensagem direta
+              </a>{' '}
+              no twitter para que possamos conversar.
+            </BottomParagraph>
+            <BottomParagraph right>
+              <a
+                href="/politica-de-privacidade.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Política de Privacidade
+              </a>{' '}
+            </BottomParagraph>
+          </BottomBlockWrapper>
         </BottomWrapper>
       </Wrapper>
     </Layout>
@@ -264,10 +316,17 @@ const BottomTitle = styled.div`
   margin-bottom: 15px;
 `;
 
-const PowerWrapper = styled.div`
+const BottomParagraph = styled.p`
+  text-align: ${props => (props.right ? 'right' : 'left')};
+`;
+
+const BottomBlockWrapper = styled.div`
   max-width: 1200px;
   margin: auto;
   padding: 40px 40px 0;
+`;
+
+const PowerWrapper = styled(BottomBlockWrapper)`
   text-align: right;
 `;
 
