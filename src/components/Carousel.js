@@ -4,47 +4,22 @@ import Carousel from 'nuka-carousel';
 
 import colors from '../components/utils/colors';
 import media, { breakpoints } from '../components/utils/media'
+import useWindowSize from '../hooks/useWindowSize'
 import Card from '../components/Card';
 
 import arrowIcon from '../images/icons/arrow.svg';
 
 export default ({ brazilData, hours, serverData }) => {
   const { balance, onlineUsers } = serverData;
-
   const [slidesToShow, setSlidesToShow] = useState(2)
-
   const breakpoint = breakpoints()
-
+  const windowSize = useWindowSize()
   const params = {
     dragging: true,
     slidesToShow,
     cellSpacing: 10,
     slidesToScroll: 1,
   }
-
-  const isClient = typeof window === 'object';
-
-  function getSize() {
-    return {
-      width: isClient ? window.innerWidth : undefined,
-      height: isClient ? window.innerHeight : undefined
-    };
-  }
-
-  const [windowSize, setWindowSize] = useState(getSize);
-
-  useEffect(() => {
-    if (!isClient) {
-      return false;
-    }
-
-    function handleResize() {
-      setWindowSize(getSize());
-    }
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
 
   useEffect(() => {
     const width = windowSize.width
