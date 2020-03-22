@@ -34,7 +34,7 @@ const Layout = ({ children }) => {
 
 const LayoutWrapper = styled.div`
   font-family: 'roboto';
-  padding-bottom: 150px;
+  
 `;
 
 Layout.propTypes = {
