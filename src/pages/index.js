@@ -219,6 +219,20 @@ const IndexPage = () => {
             </BottomParagraph>
             <BottomParagraph right>
               <a
+                href="https://github.com/MetflixLabs/ajuda-corona"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Código fonte do website
+              </a>{' '}
+              <a
+                href="https://github.com/MetflixLabs/ajuda-corona-api"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Código fonte da api
+              </a>{' '}
+              <a
                 href="/politica-de-privacidade.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -318,6 +332,10 @@ const BottomTitle = styled.div`
 
 const BottomParagraph = styled.p`
   text-align: ${props => (props.right ? 'right' : 'left')};
+
+  a {
+    padding: ${props => (props.right ? '0 20px' : '0')};
+  }
 `;
 
 const BottomBlockWrapper = styled.div`
