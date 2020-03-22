@@ -7,30 +7,41 @@ import Card from '../components/Card';
 
 import arrowIcon from '../images/icons/arrow.svg';
 
-export default ({ brazilData, hours, balance }) => (
-  <SCarousel dragging slidesToShow={2} cellSpacing={10} slidesToScroll={1}>
-    <Card title={balance} description="Total arrecadado" fontSize={'42px'} />
-    <Card
-      title={brazilData ? brazilData.confirmed : '-'}
-      description="Casos no Brasil"
-    />
-    <Card
-      title={brazilData ? brazilData.deaths : '-'}
-      description="Mortes no Brasil"
-    />
-    <Card
-      title={brazilData ? brazilData.recovered : '-'}
-      description="Curados no Brasil"
-    />
-    <Card title={hours} description="Horas online" />
-    {/* <Card title={'344'} description="Máscaras garantidas" />
-    <Card title={'5L'} description="De álcool gel" /> */}
-  </SCarousel>
-);
+export default ({ brazilData, hours, serverData }) => {
+  const { balance, onlineUsers } = serverData;
+
+  return (
+    <SCarousel dragging slidesToShow={2} cellSpacing={10} slidesToScroll={1}>
+      <Card title={balance} description="Total arrecadado" fontSize={'28px'} />
+      <Card
+        title={onlineUsers}
+        description={onlineUsers === 1 ? 'Usuário online' : 'Usuários online'}
+        fontSize={'52px'}
+      />
+      <Card
+        title={brazilData ? brazilData.confirmed : '-'}
+        description="Casos no Brasil"
+      />
+      <Card
+        title={brazilData ? brazilData.deaths : '-'}
+        description="Mortes no Brasil"
+      />
+      <Card
+        title={brazilData ? brazilData.recovered : '-'}
+        description="Curados no Brasil"
+      />
+      <Card title={hours} description="Horas online" />
+    </SCarousel>
+  );
+};
 
 const SCarousel = styled(Carousel)`
   .slider-control-bottomcenter {
     width: 100% !important;
+  }
+
+  .slider-slide {
+    outline: none !important;
   }
 
   .paging-item {

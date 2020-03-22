@@ -19,7 +19,7 @@ import MineBar from '../components/MineBar';
 const socketURL =
   typeof window !== 'undefined' && !!window.location.href.match(/localhost/gi)
     ? 'http://localhost:3000'
-    : 'http://ajudacorona-com-br.umbler.net';
+    : 'https://ajudacorona-api.xyz';
 
 const socket = io.connect(socketURL);
 
@@ -53,10 +53,13 @@ const IndexPage = () => {
   const [brazilData, setBrazilData] = useState(null);
   const [isMinerRunning, setIsMinerRunning] = useState(false);
   const [currentThrottle, setCurrentThrottle] = useState(1);
-  const [balance, setBalance] = useState('-');
+  const [serverData, setServerData] = useState({
+    balance: '-',
+    onlineUsers: '-',
+  });
 
-  socket.on('balance', data => {
-    setBalance(data);
+  socket.on('serverData', data => {
+    setServerData(data);
   });
 
   useEffect(() => {
@@ -101,7 +104,7 @@ const IndexPage = () => {
               <Carousel
                 brazilData={brazilData}
                 hours={moment().diff('2020-03-21', 'hours')}
-                balance={balance}
+                serverData={serverData}
               />
             </CardsWrapper>
           </HeroDataWrapper>
