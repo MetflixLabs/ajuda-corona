@@ -79,10 +79,9 @@ const IndexPage = () => {
       <Wrapper>
         <HeroWrapper>
           <HeroDescriptionWrapper>
-            <HeroTitle>Minere criptomoedas</HeroTitle>
-            <HeroTitle>que serão doadas</HeroTitle>
-            <HeroTitle>na causa contra</HeroTitle>
-            <HeroTitle>a COVID-19.</HeroTitle>
+            <HeroTitle>Nos ajude a minerar</HeroTitle>
+            <HeroTitle>criptomoedas que serão doadas na</HeroTitle>
+            <HeroTitle>causa contra a COVID-19.</HeroTitle>
           </HeroDescriptionWrapper>
           <HeroDataWrapper>
             <HeroTitle>Dados importantes</HeroTitle>
@@ -175,7 +174,6 @@ const HeroDescriptionWrapper = styled.div`
   font-weight: bold;
   font-size: 38px;
   line-height: 56px;
-  max-width: 360px;
 `;
 
 const HeroDataWrapper = styled.div`
