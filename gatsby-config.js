@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Ajuda Corona`,
-    description: `Minere criptomoedas que serão doadas na causa contra a COVID-19.`,
+    description: `Nos ajude a minerar criptomoedas que serão doadas na causa contra a COVID-19.`,
     author: `@MetflixLabs`,
   },
   plugins: [
@@ -25,7 +25,7 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/icons/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/icons/maskIcon.png`, // This path is relative to the root of the site.
       },
     },
     {

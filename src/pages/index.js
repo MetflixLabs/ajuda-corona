@@ -45,7 +45,7 @@ const toggleMiner = (isMinerRunning, setIsMinerRunning) => {
 
 const IndexPage = () => {
   const [isMinerReady, setIsMinerReady] = useState(false);
-  const [confirmedCases, setconfirmedCases] = useState(null);
+  const [brazilData, setBrazilData] = useState(null);
   const [isMinerRunning, setIsMinerRunning] = useState(false);
   const [currentThrottle, setCurrentThrottle] = useState(1);
   const [balanceHistory, setBalanceHistory] = useState(['']);
@@ -61,23 +61,21 @@ const IndexPage = () => {
   }, [balanceHistory])
 
   useEffect(() => {
-    if (!confirmedCases) {
+    if (brazilData === null) {
       window.gtag &&
         window.gtag('config', 'UA-161435848-1', {
           page_title: 'home',
           page_path: '/',
         });
 
-      setconfirmedCases('-');
+      setBrazilData(false);
 
       axios
         .get('//coronavirus-tracker-api.herokuapp.com/v2/locations/35')
         .then(res => {
-          const { confirmed } = res.data.location.latest;
+          const { latest } = res.data.location;
 
-          if (confirmed > 0) {
-            setconfirmedCases(confirmed);
-          }
+          setBrazilData(latest);
         })
         .catch(err => err);
     }
@@ -93,15 +91,16 @@ const IndexPage = () => {
       <Wrapper>
         <HeroWrapper>
           <HeroDescriptionWrapper>
-            <HeroTitle>Nos ajude a minerar</HeroTitle>
-            <HeroTitle>criptomoedas que serão doadas na</HeroTitle>
-            <HeroTitle>causa contra a COVID-19.</HeroTitle>
+            <HeroTitle>
+              Nos ajude a minerar criptomoedas que serão doadas na causa contra
+              a COVID-19.
+            </HeroTitle>
           </HeroDescriptionWrapper>
           <HeroDataWrapper>
             <HeroTitle>Dados importantes</HeroTitle>
             <CardsWrapper>
               <Carousel
-                confirmedCases={confirmedCases}
+                brazilData={brazilData}
                 hours={moment().diff('2020-03-21', 'hours')}
                 lastBalance={lastBalance}
               />
