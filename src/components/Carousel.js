@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Carousel from 'nuka-carousel';
 
 import colors from '../components/utils/colors';
+import media, { breakpoints } from '../components/utils/media'
 import Card from '../components/Card';
 
 import arrowIcon from '../images/icons/arrow.svg';
@@ -10,8 +11,52 @@ import arrowIcon from '../images/icons/arrow.svg';
 export default ({ brazilData, hours, serverData }) => {
   const { balance, onlineUsers } = serverData;
 
+  const [slidesToShow, setSlidesToShow] = useState(2)
+
+  const breakpoint = breakpoints()
+
+  const params = {
+    dragging: true,
+    slidesToShow,
+    cellSpacing: 10,
+    slidesToScroll: 1,
+  }
+
+  const isClient = typeof window === 'object';
+
+  function getSize() {
+    return {
+      width: isClient ? window.innerWidth : undefined,
+      height: isClient ? window.innerHeight : undefined
+    };
+  }
+
+  const [windowSize, setWindowSize] = useState(getSize);
+
+  useEffect(() => {
+    if (!isClient) {
+      return false;
+    }
+
+    function handleResize() {
+      setWindowSize(getSize());
+    }
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    const width = windowSize.width
+    if (width < breakpoint.phoneLandscape) return setSlidesToShow(1)
+    if (width < breakpoint.tablet) return setSlidesToShow(2)
+    if (width < breakpoint.desktop) return setSlidesToShow(3)
+    if (width < breakpoint.large) return setSlidesToShow(4)
+    return setSlidesToShow(2)
+  }, [windowSize])
+
   return (
-    <SCarousel dragging slidesToShow={2} cellSpacing={10} slidesToScroll={1}>
+    <SCarousel {...params}>
       <Card title={balance} description="Total arrecadado" fontSize={'28px'} />
       <Card
         title={onlineUsers}
@@ -42,6 +87,8 @@ const SCarousel = styled(Carousel)`
 
   .slider-slide {
     outline: none !important;
+    align-items: center;
+
   }
 
   .paging-item {
@@ -56,8 +103,9 @@ const SCarousel = styled(Carousel)`
   }
 
   .slider-list {
+    display: flex;
     width: 100% !important;
-    height: 200px !important;
+    height: 230px !important;
   }
 
   .slider-control-centerleft {
