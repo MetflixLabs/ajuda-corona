@@ -12,14 +12,8 @@ import colors from '../components/utils/colors';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import Card from '../components/Card';
-import Carousel from '../components/Carousel'
+import Carousel from '../components/Carousel';
 import MineBar from '../components/MineBar';
-
-// const swiperParams = {
-//   slidesPerView: 1,
-//   spaceBetween: 30,
-//   centeredSlides: true,
-// };
 
 const toggleMiner = (isMinerRunning, setIsMinerRunning) => {
   if (isMinerRunning) {
@@ -93,17 +87,10 @@ const IndexPage = () => {
           <HeroDataWrapper>
             <HeroTitle>Dados importantes</HeroTitle>
             <CardsWrapper>
-              <Carousel data={{confirmedCases, hours: moment().diff('2020-03-21', 'hours')}} />
-              {/* <Card
-                title={confirmedCases}
-                description="Casos no Brasil"
-                isInfo
-              ></Card>
-              <Card
-                title={}
-                description="Horas online"
-                isInfo
-              ></Card> */}
+              <Carousel
+                confirmedCases={confirmedCases}
+                hours={moment().diff('2020-03-21', 'hours')}
+              />
             </CardsWrapper>
           </HeroDataWrapper>
         </HeroWrapper>
@@ -173,6 +160,7 @@ const IndexPage = () => {
 
 const Wrapper = styled.div`
   background: ${colors.lightGray};
+  min-width: 1160px;
 `;
 
 const HeroWrapper = styled.div`

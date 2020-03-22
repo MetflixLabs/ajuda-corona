@@ -1,11 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import media from '../components/utils/media';
 import colors from '../components/utils/colors';
 
-const Card = ({ title, description, isPurple, isInfo }) => (
-  <Wrapper isPurple={isPurple} isInfo={isInfo}>
+const Card = ({ title, description, isPurple }) => (
+  <Wrapper isPurple={isPurple}>
     <CardTitle isPurple={isPurple}>{title}</CardTitle>
     <CardDescription isPurple={isPurple}>{description}</CardDescription>
   </Wrapper>
@@ -14,13 +13,13 @@ const Card = ({ title, description, isPurple, isInfo }) => (
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: ${props => props.isInfo ? 'flex-start' : 'center'};
+  justify-content: ${props => (props.isPurple ? 'center' : 'flex-start')};
   max-width: ${props => (props.isPurple ? '500px' : '285px')};
   min-width: 205px;
   min-height: 185px;
-  padding: 20px 30px;
+  padding: ${props => (props.isPurple ? '20px 30px' : '10px 30px')};
   background: ${props => (props.isPurple ? colors.purple : colors.white)};
-  box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
   border-radius: 15px;
 `;
 
@@ -35,7 +34,7 @@ const CardTitle = styled.div`
 const CardDescription = styled.div`
   color: ${props => (props.isPurple ? colors.gray : colors.purple)};
   font-weight: bold;
-  font-size: ${props => (props.isPurple ? '48px' : '36px')};;
+  font-size: ${props => (props.isPurple ? '48px' : '36px')};
   line-height: 42px;
 `;
 
