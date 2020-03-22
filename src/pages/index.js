@@ -48,17 +48,29 @@ const IndexPage = () => {
   const [brazilData, setBrazilData] = useState(null);
   const [isMinerRunning, setIsMinerRunning] = useState(false);
   const [currentThrottle, setCurrentThrottle] = useState(1);
-  const [balanceHistory, setBalanceHistory] = useState(['']);
-  const [lastBalance, setLastBalance] = useState(null)
+  const [balanceHistory, setBalanceHistory] = useState([]);
+  const [lastBalance, setLastBalance] = useState('N/A')
 
   socket.on('balanceHistory', function (data) {
     setBalanceHistory(data)
-    console.log('balanceHistory', data);
   });
 
   useEffect(() => {
     setLastBalance(balanceHistory[balanceHistory.length - 1])
+    console.log('balanceHistory', balanceHistory);
   }, [balanceHistory])
+
+  useEffect(() => {
+    const fetch = async () => {
+      try {
+        const res = await axios.get('http://localhost:3000/api/balance')
+        setLastBalance(res.data)
+      } catch (error) {
+        throw new Error(error)
+      }
+    }
+    fetch()
+  }, [])
 
   useEffect(() => {
     if (brazilData === null) {
