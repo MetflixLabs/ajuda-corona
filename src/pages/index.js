@@ -20,9 +20,19 @@ import MineBar from '../components/MineBar';
 const socketURL =
   typeof window !== 'undefined' && !!window.location.href.match(/localhost/gi)
     ? 'http://localhost:5000'
-    : 'https://gretchenless-cloud.xyz/corona';
+    : 'https://gretchenless-cloud.xyz';
 
-const socket = io.connect(socketURL);
+// const socketURL = 'https://gretchenless-cloud.xyz';
+
+const socket = io.connect(socketURL, {
+  path: '/corona/socket',
+});
+// const socket = io.connect(socketURL);
+// const socket = io({
+//   extraHeaders: {
+//     'Access-Control-Allow-Credentials': 'omit',
+//   },
+// }).connect(socketURL);
 
 const toggleMiner = (isAdblocked, isMinerRunning, setIsMinerRunning) => {
   if (isAdblocked) {
@@ -200,13 +210,13 @@ const IndexPage = () => {
               .
             </BottomParagraph>
             <BottomParagraph>
-              O projeto é totalmente voluntário e não visa nenhum lucro. Vamos doar integralmente todo o valor arrecadado
-              para instituições engajadas no combate à
-              COVID-19.
+              O projeto é totalmente voluntário e não visa nenhum lucro. Vamos
+              doar integralmente todo o valor arrecadado para instituições
+              engajadas no combate à COVID-19.
             </BottomParagraph>
             <BottomParagraph>
-              Se você é representante de alguma instituição ou representante
-              do governo, por favor entre em contato conosco atráves de uma{' '}
+              Se você é representante de alguma instituição ou representante do
+              governo, por favor entre em contato conosco atráves de uma{' '}
               <a
                 href="https://twitter.com/messages/compose?recipient_id=1132804885978734593&text=Sou%20um%20representante%20e%20quero%20ajudar"
                 target="_blank"
