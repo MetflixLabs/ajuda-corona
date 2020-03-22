@@ -249,7 +249,6 @@ const IndexPage = () => {
 
 const Wrapper = styled.div`
   background: ${colors.lightGray};
-  /* min-width: 1160px; */
 `;
 
 const HeroWrapper = styled.div`
@@ -257,7 +256,7 @@ const HeroWrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   max-width: 1200px;
-  padding: 40px;
+  padding: 40px 40px 10px 40px;
   margin: auto;
   ${media.large`
     flex-direction: row;
