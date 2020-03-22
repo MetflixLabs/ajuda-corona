@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import axios from 'axios';
 import Timer from 'react-compound-timer';
 import moment from 'moment';
-import io from 'socket.io-client'
+import io from 'socket.io-client';
 
 import powerButtonIcon from '../images/icons/powerButton.svg';
 import loadingIcon from '../images/icons/loading.svg';
@@ -16,7 +16,12 @@ import Card from '../components/Card';
 import Carousel from '../components/Carousel';
 import MineBar from '../components/MineBar';
 
-const socket = io.connect('http://localhost:3000')
+const socketURL =
+  typeof window !== 'undefined' && !!window.location.href.match(/localhost/gi)
+    ? 'http://localhost:3000'
+    : 'http://ajudacorona-com-br.umbler.net';
+
+const socket = io.connect(socketURL);
 
 const toggleMiner = (isMinerRunning, setIsMinerRunning) => {
   if (isMinerRunning) {
@@ -48,29 +53,11 @@ const IndexPage = () => {
   const [brazilData, setBrazilData] = useState(null);
   const [isMinerRunning, setIsMinerRunning] = useState(false);
   const [currentThrottle, setCurrentThrottle] = useState(1);
-  const [balanceHistory, setBalanceHistory] = useState([]);
-  const [lastBalance, setLastBalance] = useState('N/A')
+  const [balance, setBalance] = useState('-');
 
-  socket.on('balanceHistory', function (data) {
-    setBalanceHistory(data)
+  socket.on('balance', data => {
+    setBalance(data);
   });
-
-  useEffect(() => {
-    setLastBalance(balanceHistory[balanceHistory.length - 1])
-    console.log('balanceHistory', balanceHistory);
-  }, [balanceHistory])
-
-  useEffect(() => {
-    const fetch = async () => {
-      try {
-        const res = await axios.get('http://localhost:3000/api/balance')
-        setLastBalance(res.data)
-      } catch (error) {
-        throw new Error(error)
-      }
-    }
-    fetch()
-  }, [])
 
   useEffect(() => {
     if (brazilData === null) {
@@ -114,7 +101,7 @@ const IndexPage = () => {
               <Carousel
                 brazilData={brazilData}
                 hours={moment().diff('2020-03-21', 'hours')}
-                lastBalance={lastBalance}
+                balance={balance}
               />
             </CardsWrapper>
           </HeroDataWrapper>
@@ -159,8 +146,8 @@ const IndexPage = () => {
                           <Timer.Seconds />
                         </Timer>
                       ) : (
-                          '-'
-                        )
+                        '-'
+                      )
                     }
                     isPurple
                   ></Card>
