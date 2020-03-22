@@ -3,9 +3,9 @@ import styled from 'styled-components';
 
 import colors from '../components/utils/colors';
 
-const Card = ({ title, description, isPurple }) => (
+const Card = ({ title, description, isPurple, fontSize }) => (
   <Wrapper isPurple={isPurple}>
-    <CardTitle isPurple={isPurple}>{title}</CardTitle>
+    <CardTitle isPurple={isPurple} fontSize={fontSize}>{title}</CardTitle>
     <CardDescription isPurple={isPurple}>{description}</CardDescription>
   </Wrapper>
 );
@@ -26,7 +26,7 @@ const Wrapper = styled.div`
 const CardTitle = styled.div`
   color: ${colors.gray};
   font-weight: bold;
-  font-size: ${props => (props.isPurple ? '24px' : '64px')};
+  font-size: ${props => (props.fontSize ? props.fontSize : props.isPurple ? '24px' : '64px')};
   line-height: ${props => (props.isPurple ? '28px' : '75px')};
   margin-bottom: ${props => (props.isPurple ? '10px' : '0')};
 `;
