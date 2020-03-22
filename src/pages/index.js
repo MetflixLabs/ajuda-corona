@@ -25,20 +25,22 @@ const toggleMiner = (isMinerRunning, setIsMinerRunning) => {
   if (isMinerRunning) {
     window.miner.stop();
 
-    window.gtag && window.gtag('event', 'click', {
-      event_label: 'power-button-stop',
-      event_category: 'power-button',
-      non_interaction: 1,
-    });
+    window.gtag &&
+      window.gtag('event', 'click', {
+        event_label: 'power-button-stop',
+        event_category: 'power-button',
+        non_interaction: 1,
+      });
 
     return setIsMinerRunning(false);
   }
 
-  window.gtag && window.gtag('event', 'click', {
-    event_label: 'power-button-start',
-    event_category: 'power-button',
-    non_interaction: 1,
-  });
+  window.gtag &&
+    window.gtag('event', 'click', {
+      event_label: 'power-button-start',
+      event_category: 'power-button',
+      non_interaction: 1,
+    });
 
   window.miner.start();
   setIsMinerRunning(true);
@@ -52,23 +54,25 @@ const IndexPage = () => {
 
   useEffect(() => {
     if (!confirmedCases) {
+      window.gtag &&
+        window.gtag('config', 'UA-161435848-1', {
+          page_title: 'home',
+          page_path: '/',
+        });
+
       setconfirmedCases('-');
 
       axios
         .get('//coronavirus-tracker-api.herokuapp.com/v2/locations/35')
         .then(res => {
           const { confirmed } = res.data.location.latest;
-          setconfirmedCases(confirmed);
+
+          if (confirmed > 0) {
+            setconfirmedCases(confirmed);
+          }
         })
         .catch(err => err);
     }
-  }, [confirmedCases]);
-
-  useEffect(() => {
-    window.gtag && window.gtag('config', 'UA-161435848-1', {
-      page_title: 'home',
-      page_path: '/',
-    });
   }, []);
 
   return (
