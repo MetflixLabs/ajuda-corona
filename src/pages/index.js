@@ -201,7 +201,7 @@ const IndexPage = () => {
             </BottomParagraph>
             <BottomParagraph>
               O projeto é totalmente voluntário e não visa nenhum lucro. Vamos doar integralmente todo o valor arrecadado
-              para instituições engajadas no combate da
+              para instituições engajadas no combate à
               COVID-19.
             </BottomParagraph>
             <BottomParagraph>
