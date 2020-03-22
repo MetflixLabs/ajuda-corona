@@ -175,7 +175,6 @@ const HeroDescriptionWrapper = styled.div`
   font-weight: bold;
   font-size: 38px;
   line-height: 56px;
-  max-width: 360px;
 `;
 
 const HeroDataWrapper = styled.div`
