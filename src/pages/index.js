@@ -25,9 +25,10 @@ const socketURL =
 // const socketURL = 'https://gretchenless-cloud.xyz';
 
 const socket = io.connect(socketURL, {
-  path: '/corona/socket/socket.io',
+  path: '/corona/ws',
 });
 // const socket = io.connect(socketURL);
+
 // const socket = io({
 //   extraHeaders: {
 //     'Access-Control-Allow-Credentials': 'omit',
