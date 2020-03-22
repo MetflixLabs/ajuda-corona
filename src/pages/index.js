@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import axios from 'axios';
 import Timer from 'react-compound-timer';
 import moment from 'moment';
+import io from 'socket.io-client'
 
 import powerButtonIcon from '../images/icons/powerButton.svg';
 import loadingIcon from '../images/icons/loading.svg';
@@ -14,6 +15,8 @@ import SEO from '../components/seo';
 import Card from '../components/Card';
 import Carousel from '../components/Carousel';
 import MineBar from '../components/MineBar';
+
+const socket = io.connect('http://localhost:3000')
 
 const toggleMiner = (isMinerRunning, setIsMinerRunning) => {
   if (isMinerRunning) {
@@ -45,6 +48,17 @@ const IndexPage = () => {
   const [confirmedCases, setconfirmedCases] = useState(null);
   const [isMinerRunning, setIsMinerRunning] = useState(false);
   const [currentThrottle, setCurrentThrottle] = useState(1);
+  const [balanceHistory, setBalanceHistory] = useState(['']);
+  const [lastBalance, setLastBalance] = useState(null)
+
+  socket.on('balanceHistory', function (data) {
+    setBalanceHistory(data)
+    console.log('balanceHistory', data);
+  });
+
+  useEffect(() => {
+    setLastBalance(balanceHistory[balanceHistory.length - 1])
+  }, [balanceHistory])
 
   useEffect(() => {
     if (!confirmedCases) {
@@ -89,6 +103,7 @@ const IndexPage = () => {
               <Carousel
                 confirmedCases={confirmedCases}
                 hours={moment().diff('2020-03-21', 'hours')}
+                lastBalance={lastBalance}
               />
             </CardsWrapper>
           </HeroDataWrapper>
@@ -133,8 +148,8 @@ const IndexPage = () => {
                           <Timer.Seconds />
                         </Timer>
                       ) : (
-                        '-'
-                      )
+                          '-'
+                        )
                     }
                     isPurple
                   ></Card>
