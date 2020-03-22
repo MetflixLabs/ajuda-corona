@@ -109,11 +109,16 @@ const SCarousel = styled(Carousel)`
   }
 
   .slider-control-centerleft {
+    display: none;
     z-index: 3;
     right: 80px !important;
     transform: translateY(-50%);
     top: -45px !important;
     left: unset !important;
+
+    ${media.phoneLandscape`
+      display: block;
+    `}
 
     button {
       &:after {
@@ -135,9 +140,14 @@ const SCarousel = styled(Carousel)`
   }
 
   .slider-control-centerright {
+    display: none;
     z-index: 3;
     top: -45px !important;
     right: 16px !important;
+
+    ${media.phoneLandscape`
+      display: block;
+    `}
 
     button {
       &:after {
