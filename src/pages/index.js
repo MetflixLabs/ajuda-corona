@@ -186,9 +186,9 @@ const IndexPage = () => {
               >
                 @MetflixLabs
               </a>{' '}
-              desenvolvemos esse website. Ao clicar no botão "power", você
+              desenvolvemos este website. Ao clicar no botão "power", você
               estará emprestando um pouco do poder de procesamento do seu
-              computador, gerando assim o processo de "mineração" de uma
+              dispositivo, gerando assim o processo de "mineração" de uma
               criptomoeda (
               <a
                 href="https://cointimes.com.br/como-minerar-bitcoin/"
@@ -200,14 +200,13 @@ const IndexPage = () => {
               .
             </BottomParagraph>
             <BottomParagraph>
-              É importante ressaltar que você não vai receber nada em troca por
-              isso (e nem nós). Vamos doar integralmente todo o valor arrecadado
-              para instituições que possam agir com recursos para o combate da
+              O projeto é totalmente voluntário e não visa nenhum lucro. Vamos doar integralmente todo o valor arrecadado
+              para instituições engajadas no combate da
               COVID-19.
             </BottomParagraph>
             <BottomParagraph>
-              Se você é o representante de alguma instituição ou representante
-              do governo, por favor entre em contato com a gente atráves de uma{' '}
+              Se você é representante de alguma instituição ou representante
+              do governo, por favor entre em contato conosco atráves de uma{' '}
               <a
                 href="https://twitter.com/messages/compose?recipient_id=1132804885978734593&text=Sou%20um%20representante%20e%20quero%20ajudar"
                 target="_blank"
