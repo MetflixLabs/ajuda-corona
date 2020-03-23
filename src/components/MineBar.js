@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Slider from 'rc-slider';
 
 import colors from '../components/utils/colors';
+import media, { breakpoints } from '../components/utils/media';
+import useWindowSize from '../hooks/useWindowSize'
 
 import sneezingEmojiIcon from '../images/icons/sneezingEmoji.svg';
 import thermoEmojiIcon from '../images/icons/thermoEmoji.svg';
@@ -21,22 +23,37 @@ const formatThrottle = value => {
   if (value <= 100) return 0;
 };
 
-const MineBar = ({ currentThrottle, setCurrentThrottle }) => (
-  <Wrapper>
-    <InnerWrapper>
-      <StyledSlider
-        defaultValue={1}
-        min={1}
-        step={1}
-        onChange={value => {
-          setCurrentThrottle(value);
-          window.miner.setThrottle(formatThrottle(value));
-        }}
-        currentThrottle={currentThrottle}
-      />
-    </InnerWrapper>
-  </Wrapper>
-);
+const MineBar = ({ currentThrottle, setCurrentThrottle }) => {
+  const b = breakpoints()
+  const windowSize = useWindowSize()
+
+  const [vertical, setVertical] = useState(false)
+
+  useEffect(() => {
+    const width = windowSize.width
+    const vert = width < b.phoneLandscape
+    setVertical(vert)
+  }, [windowSize])
+
+  return (
+    <Wrapper>
+      <InnerWrapper>
+        <StyledSlider
+          vertical={vertical}
+          defaultValue={33}
+          min={1}
+          step={1}
+          onChange={value => {
+            setCurrentThrottle(value);
+            window.miner.setThrottle(formatThrottle(value));
+          }}
+          currentThrottle={currentThrottle}
+        />
+      </InnerWrapper>
+    </Wrapper>
+  );
+}
+
 
 const Wrapper = styled.div`
   flex: 1;
@@ -46,48 +63,64 @@ const Wrapper = styled.div`
 const InnerWrapper = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   min-width: 400px;
+  ${media.phoneLandscape`
+    justify-content: center;
+  `}
 `;
 
 const StyledSlider = styled(Slider)`
   display: flex !important;
   position: relative;
-  height: 40px;
+  height: 300px;
   padding: 5px 0;
-  min-width: 390px;
+  min-width: 15px;
   border-radius: 8px;
   -ms-touch-action: none;
   touch-action: none;
   box-sizing: border-box;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  
+  ${media.phoneLandscape`
+    height: 40px;
+    min-width: 390px;
+  `}
+  
   .rc-slider-rail {
     position: absolute;
     width: 100%;
     background-color: ${colors.white};
-    height: 20px;
+    height: 300px;
     border-radius: 8px;
+    
+    ${media.phoneLandscape`
+      height: 20px;
+    `}
   }
 
   .rc-slider-track {
-    display: none;
     background: ${colors.gray};
-    display: flex;
     z-index: 3;
-    height: 20px;
+    width: 20px;
     border-radius: 8px;
+
+    ${media.phoneLandscape`
+      height: 20px;
+    `}
   }
 
   .rc-slider-handle {
     background-image: ${props =>
-      props.currentThrottle < 50
-        ? `url(${sneezingEmojiIcon})`
-        : props.currentThrottle < 100
+    props.currentThrottle < 50
+      ? `url(${sneezingEmojiIcon})`
+      : props.currentThrottle < 100
         ? `url(${thermoEmojiIcon})`
         : `url(${maskEmojiIcon})`};
     background-size: cover;
     background-repeat: no-repeat;
     position: absolute;
+    left: -8px;
     margin-top: -8px;
     width: 35px;
     height: 35px;
@@ -97,6 +130,11 @@ const StyledSlider = styled(Slider)`
     -ms-touch-action: pan-x;
     touch-action: pan-x;
     z-index: 4;
+
+    ${media.phoneLandscape`
+      left: 0;
+    `}
+
     &:focus {
       outline: none;
     }
@@ -131,8 +169,12 @@ const StyledSlider = styled(Slider)`
   .rc-slider-step {
     position: absolute;
     width: 100%;
-    height: 20px;
+    height: 300px;
     background: transparent;
+
+    ${media.phoneLandscape`
+      height: 20px;
+    `}
   }
 
   .rc-slider-dot {
@@ -141,12 +183,16 @@ const StyledSlider = styled(Slider)`
     bottom: 0;
     margin-left: -4px;
     width: 8px;
-    height: 20px;
+    height: 300px;
     border: 2px solid gray;
     background-color: gray;
     cursor: pointer;
     border-radius: 50%;
     vertical-align: middle;
+
+    ${media.phoneLandscape`
+      height: 20px;
+    `}
   }
 
   .rc-slider-dot-active {
