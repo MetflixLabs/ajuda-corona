@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 
 import Miner from '../components/core/Miner';
-import Layout from '../components/layout';
+import Layout from '@layouts/layout';
 
 import adblockPlusImg from '../images/adblock-plus.png';
 import adblockImg from '../images/adblock.png';

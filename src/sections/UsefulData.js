@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
 
-import { breakpoints } from '../components/utils/media'
-import useWindowSize from '../hooks/useWindowSize'
+import { breakpoints } from '@components/utils/media'
+import useWindowSize from '@hooks/useWindowSize'
 import moment from 'moment'
 
-import HeroTitle from '../components/HeroTitle'
-import CardsWrapper from '../components/CardsWrapper'
-import Carousel from '../components/Carousel';
+import HeroTitle from '@components/HeroTitle'
+import CardsWrapper from '@components/CardsWrapper'
+import Carousel from '@components/Carousel';
 
 export default ({ brazilData, serverData }) => {
 

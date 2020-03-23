@@ -6,20 +6,20 @@ import Timer from 'react-compound-timer';
 import moment from 'moment';
 import io from 'socket.io-client';
 
-import powerButtonIcon from '../images/icons/powerButton.svg';
-import loadingIcon from '../images/icons/loading.svg';
+import powerButtonIcon from '@src/images/icons/powerButton.svg';
+import loadingIcon from '@src/images/icons/loading.svg';
 
-import Miner from '../components/core/Miner';
-import colors from '../components/utils/colors';
-import media from '../components/utils/media'
-import Layout from '../components/layout';
-import SEO from '../components/seo';
-import Card from '../components/Card';
-import Controle from '../components/Controle'
-import BottomTitle from '../components/BottomTitle'
-import UsefulData from '../components/UsefulData'
-import HeroTitle from '../components/HeroTitle'
-import CardsWrapper from '../components/CardsWrapper'
+import Miner from '@src/components/core/Miner';
+import colors from '@src/components/utils/colors';
+import media from '@src/components/utils/media'
+import Layout from '@layouts/layout';
+import SEO from '@src/components/seo';
+import Card from '@src/components/Card';
+import Controle from '@src/components/Controle'
+import BottomTitle from '@src/components/BottomTitle'
+import UsefulData from '@sections/UsefulData'
+import HeroTitle from '@src/components/HeroTitle'
+import CardsWrapper from '@src/components/CardsWrapper'
 
 const socketURL =
   typeof window !== 'undefined' && !!window.location.href.match(/localhost/gi)
