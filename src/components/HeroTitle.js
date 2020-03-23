@@ -1,4 +1,4 @@
-import styled from 'styled'
+import styled from 'styled-components'
 
 const HeroTitle = styled.div`
   font-size: 38px;
