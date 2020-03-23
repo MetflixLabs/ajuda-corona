@@ -11,12 +11,13 @@ import loadingIcon from '../images/icons/loading.svg';
 
 import Miner from '../components/core/Miner';
 import colors from '../components/utils/colors';
-import media from '../components/utils/media'
+import media, { breakpoints } from '../components/utils/media'
+import useWindowSize from '../hooks/useWindowSize'
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import Card from '../components/Card';
 import Carousel from '../components/Carousel';
-import MineBar from '../components/MineBar';
+import Controle from '../components/Controle'
 
 const socketURL =
   typeof window !== 'undefined' && !!window.location.href.match(/localhost/gi)
@@ -62,6 +63,9 @@ const IndexPage = () => {
   const [brazilData, setBrazilData] = useState(null);
   const [isMinerRunning, setIsMinerRunning] = useState(false);
   const [currentThrottle, setCurrentThrottle] = useState(1);
+  const b = breakpoints()
+  const windowSize = useWindowSize()
+  const [isMobile, setIsMobile] = useState(windowSize < b.phoneLandscape);
   const [serverData, setServerData] = useState({
     balance: '-',
     onlineUsers: '-',
@@ -91,6 +95,12 @@ const IndexPage = () => {
         .catch(err => err);
     }
   }, []);
+
+  useEffect(() => {
+    const width = windowSize.width
+    const vert = width < b.phoneLandscape
+    setIsMobile(vert)
+  }, [windowSize])
 
   return (
     <Layout>
@@ -123,16 +133,10 @@ const IndexPage = () => {
           <BottomInnerWrapper>
             <ControlWrapper>
               <BottomTitle>Controle</BottomTitle>
-              <Card
-                title="Nível da sua contribuição"
-                description={
-                  <MineBar
-                    currentThrottle={currentThrottle}
-                    setCurrentThrottle={setCurrentThrottle}
-                  />
-                }
-                isPurple
-              ></Card>
+              <Controle
+                currentThrottle={currentThrottle}
+                setCurrentThrottle={setCurrentThrottle}
+              />
             </ControlWrapper>
             <StatusWrapper>
               <StatusInnerWrapper>
