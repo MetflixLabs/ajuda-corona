@@ -3,36 +3,41 @@ import styled from 'styled-components';
 import Carousel from 'nuka-carousel';
 
 import colors from '../components/utils/colors';
-import media, { breakpoints } from '../components/utils/media'
-import useWindowSize from '../hooks/useWindowSize'
+import media, { breakpoints } from '../components/utils/media';
+import useWindowSize from '../hooks/useWindowSize';
 import Card from '../components/Card';
 
 import arrowIcon from '../images/icons/arrow.svg';
 
 export default ({ brazilData, hours, serverData }) => {
   const { balance, onlineUsers } = serverData;
-  const [slidesToShow, setSlidesToShow] = useState(2)
-  const breakpoint = breakpoints()
-  const windowSize = useWindowSize()
+  const [slidesToShow, setSlidesToShow] = useState(2);
+  const breakpoint = breakpoints();
+  const windowSize = useWindowSize();
   const params = {
     dragging: true,
     slidesToShow,
     cellSpacing: 10,
     slidesToScroll: 1,
-  }
+  };
 
   useEffect(() => {
-    const width = windowSize.width
-    if (width < breakpoint.phoneLandscape) return setSlidesToShow(1)
-    if (width < breakpoint.tablet) return setSlidesToShow(2)
-    if (width < breakpoint.desktop) return setSlidesToShow(3)
-    if (width < breakpoint.large) return setSlidesToShow(4)
-    return setSlidesToShow(2)
-  }, [windowSize])
+    const width = windowSize.width;
+    if (width < breakpoint.phoneLandscape) return setSlidesToShow(1);
+    if (width < breakpoint.tablet) return setSlidesToShow(2);
+    if (width < breakpoint.desktop) return setSlidesToShow(3);
+    if (width < breakpoint.large) return setSlidesToShow(4);
+    return setSlidesToShow(2);
+  }, [windowSize]);
 
   return (
     <SCarousel {...params}>
-      <Card title={balance} description="Total arrecadado" fontSize={'28px'} />
+      <Card
+        title={balance}
+        description="Total arrecadado"
+        fontSize={'28px'}
+        currency
+      />
       <Card
         title={onlineUsers}
         description={onlineUsers === 1 ? 'Doador online' : 'Doadores online'}
@@ -56,6 +61,8 @@ export default ({ brazilData, hours, serverData }) => {
 };
 
 const SCarousel = styled(Carousel)`
+  outline: none !important;
+
   .slider-control-bottomcenter {
     width: 100% !important;
   }
@@ -63,7 +70,6 @@ const SCarousel = styled(Carousel)`
   .slider-slide {
     outline: none !important;
     align-items: center;
-
   }
 
   .paging-item {
