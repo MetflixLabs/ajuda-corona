@@ -24,7 +24,7 @@ const socketURL =
     : 'https://gretchenless-cloud.xyz';
 
 const socket = io.connect(socketURL, {
-  path: '/corona/ws',
+  path: '/corona',
 });
 
 const toggleMiner = (isAdblocked, isMinerRunning, setIsMinerRunning) => {
