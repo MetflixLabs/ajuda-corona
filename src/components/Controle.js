@@ -28,17 +28,17 @@ export default ({ currentThrottle, setCurrentThrottle }) => {
         />)
         : (
           <>
-          <BottomTitle>Controle</BottomTitle>
-          <Card
-            title="Nível da sua contribuição"
-            description={
-              <MineBar
-                currentThrottle={currentThrottle}
-                setCurrentThrottle={setCurrentThrottle}
-              />
-            }
-            isPurple
-          ></Card>
+            <BottomTitle>Controle</BottomTitle>
+            <Card
+              title="Nível da sua contribuição"
+              description={
+                <MineBar
+                  currentThrottle={currentThrottle}
+                  setCurrentThrottle={setCurrentThrottle}
+                />
+              }
+              isPurple
+            ></Card>
           </>)
       }
     </>
