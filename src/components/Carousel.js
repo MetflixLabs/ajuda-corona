@@ -12,7 +12,7 @@ import arrowIcon from '../images/icons/arrow.svg';
 export default ({ brazilData, hours, serverData }) => {
   const { balance, onlineUsers } = serverData;
   const [slidesToShow, setSlidesToShow] = useState(2)
-  const breakpoint = breakpoints()
+  const b = breakpoints()
   const windowSize = useWindowSize()
   const params = {
     dragging: true,
@@ -23,10 +23,10 @@ export default ({ brazilData, hours, serverData }) => {
 
   useEffect(() => {
     const width = windowSize.width
-    if (width < breakpoint.phoneLandscape) return setSlidesToShow(1)
-    if (width < breakpoint.tablet) return setSlidesToShow(2)
-    if (width < breakpoint.desktop) return setSlidesToShow(3)
-    if (width < breakpoint.large) return setSlidesToShow(4)
+    if (width < b.phoneLandscape) return setSlidesToShow(1)
+    if (width < b.tablet) return setSlidesToShow(2)
+    if (width < b.desktop) return setSlidesToShow(3)
+    if (width < b.large) return setSlidesToShow(4)
     return setSlidesToShow(2)
   }, [windowSize])
 
