@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 
-import Miner from '../components/core/Miner';
+import Miner from '@components/core/Miner';
 import Layout from '@layouts/layout';
 
 import adblockPlusImg from '../images/adblock-plus.png';
@@ -10,10 +10,11 @@ import adblockProImg from '../images/adblock-pro.png';
 
 const AdBlock = () => {
   useEffect(() => {
-    window.gtag && window.gtag('config', 'UA-161435848-1', {
-      page_title: 'ad-block',
-      page_path: '/ad-block',
-    });
+    window.gtag &&
+      window.gtag('config', 'UA-161435848-1', {
+        page_title: 'ad-block',
+        page_path: '/ad-block',
+      });
   }, []);
 
   return (

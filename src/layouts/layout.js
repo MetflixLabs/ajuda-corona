@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 // import Header from './header';
-import './layout.css';
+import '@layouts/layout.css';
 
 const Layout = ({ children }) => {
   // const data = useStaticQuery(graphql`
@@ -34,7 +34,6 @@ const Layout = ({ children }) => {
 
 const LayoutWrapper = styled.div`
   font-family: 'roboto';
-  
 `;
 
 Layout.propTypes = {

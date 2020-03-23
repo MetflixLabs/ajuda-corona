@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Slider from 'rc-slider';
 
-import colors from '../components/utils/colors';
-import media, { breakpoints } from '../components/utils/media';
-import useWindowSize from '../hooks/useWindowSize'
+import colors from '@utils/colors';
+import media, { breakpoints } from '@utils/media';
+import useWindowSize from '@hooks/useWindowSize';
 
 import sneezingEmojiIcon from '../images/icons/sneezingEmoji.svg';
 import thermoEmojiIcon from '../images/icons/thermoEmoji.svg';
@@ -24,16 +24,16 @@ const formatThrottle = value => {
 };
 
 const MineBar = ({ currentThrottle, setCurrentThrottle }) => {
-  const b = breakpoints()
-  const windowSize = useWindowSize()
+  const b = breakpoints();
+  const windowSize = useWindowSize();
 
-  const [vertical, setVertical] = useState(false)
+  const [vertical, setVertical] = useState(false);
 
   useEffect(() => {
-    const width = windowSize.width
-    const vert = width < b.phoneLandscape
-    setVertical(vert)
-  }, [windowSize])
+    const width = windowSize.width;
+    const vert = width < b.phoneLandscape;
+    setVertical(vert);
+  }, [windowSize]);
 
   return (
     <Wrapper>
@@ -52,8 +52,7 @@ const MineBar = ({ currentThrottle, setCurrentThrottle }) => {
       </InnerWrapper>
     </Wrapper>
   );
-}
-
+};
 
 const Wrapper = styled.div`
   flex: 1;
@@ -81,19 +80,19 @@ const StyledSlider = styled(Slider)`
   touch-action: none;
   box-sizing: border-box;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  
+
   ${media.phoneLandscape`
     height: 40px;
     min-width: 390px;
   `}
-  
+
   .rc-slider-rail {
     position: absolute;
     width: 100%;
     background-color: ${colors.white};
     height: 300px;
     border-radius: 8px;
-    
+
     ${media.phoneLandscape`
       height: 20px;
     `}
@@ -112,9 +111,9 @@ const StyledSlider = styled(Slider)`
 
   .rc-slider-handle {
     background-image: ${props =>
-    props.currentThrottle < 50
-      ? `url(${sneezingEmojiIcon})`
-      : props.currentThrottle < 100
+      props.currentThrottle < 50
+        ? `url(${sneezingEmojiIcon})`
+        : props.currentThrottle < 100
         ? `url(${thermoEmojiIcon})`
         : `url(${maskEmojiIcon})`};
     background-size: cover;

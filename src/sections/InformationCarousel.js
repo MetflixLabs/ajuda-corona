@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import { breakpoints } from '@components/utils/media';
+import { breakpoints } from '@utils/media';
 import useWindowSize from '@hooks/useWindowSize';
 import moment from 'moment';
 

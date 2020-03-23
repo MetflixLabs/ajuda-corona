@@ -2,18 +2,18 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Carousel from 'nuka-carousel';
 
-import colors from '../components/utils/colors';
-import media, { breakpoints } from '../components/utils/media';
-import useWindowSize from '../hooks/useWindowSize';
-import Card from '../components/Card';
+import colors from '@utils/colors';
+import media, { breakpoints } from '@utils/media';
+import useWindowSize from '@hooks/useWindowSize';
+import Card from '@components/Card';
 
 import arrowIcon from '../images/icons/arrow.svg';
 
 export default ({ brazilData, hours, serverData }) => {
   const { balance, onlineUsers } = serverData;
-  const [slidesToShow, setSlidesToShow] = useState(2)
-  const b = breakpoints()
-  const windowSize = useWindowSize()
+  const [slidesToShow, setSlidesToShow] = useState(2);
+  const b = breakpoints();
+  const windowSize = useWindowSize();
   const params = {
     dragging: true,
     slidesToShow,
@@ -22,13 +22,13 @@ export default ({ brazilData, hours, serverData }) => {
   };
 
   useEffect(() => {
-    const width = windowSize.width
-    if (width < b.phoneLandscape) return setSlidesToShow(1)
-    if (width < b.tablet) return setSlidesToShow(2)
-    if (width < b.desktop) return setSlidesToShow(3)
-    if (width < b.large) return setSlidesToShow(4)
-    return setSlidesToShow(2)
-  }, [windowSize])
+    const width = windowSize.width;
+    if (width < b.phoneLandscape) return setSlidesToShow(1);
+    if (width < b.tablet) return setSlidesToShow(2);
+    if (width < b.desktop) return setSlidesToShow(3);
+    if (width < b.large) return setSlidesToShow(4);
+    return setSlidesToShow(2);
+  }, [windowSize]);
 
   return (
     <SCarousel {...params}>

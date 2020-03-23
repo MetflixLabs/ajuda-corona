@@ -11,10 +11,10 @@ import media from '@utils/media';
 import powerButtonIcon from '@src/images/icons/powerButton.svg';
 import loadingIcon from '@src/images/icons/loading.svg';
 
-import Card from '@src/components/Card';
-import Controle from '@src/components/Controle';
-import BottomTitle from '@src/components/BottomTitle';
-import CardsWrapper from '@src/components/CardsWrapper';
+import Card from '@components/Card';
+import Controle from '@components/Controle';
+import BottomTitle from '@components/BottomTitle';
+import CardsWrapper from '@components/CardsWrapper';
 
 export default () => {
   const [isAdblocked, setIsAdblocked] = useState(false);

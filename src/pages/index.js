@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import axios from 'axios';
 import io from 'socket.io-client';
 
-import colors from '@src/components/utils/colors';
+import colors from '@components/utils/colors';
 import Layout from '@layouts/layout';
-import SEO from '@src/components/seo';
+import SEO from '@components/seo';
 
 import Hero from '@sections/Hero';
 import Dashboard from '@sections/Dashboard';

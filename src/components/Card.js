@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import colors from '../components/utils/colors';
+import colors from '@utils/colors';
 
 const Card = ({ title, description, isPurple, fontSize, currency }) => (
   <Wrapper isPurple={isPurple}>
