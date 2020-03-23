@@ -11,13 +11,15 @@ import loadingIcon from '../images/icons/loading.svg';
 
 import Miner from '../components/core/Miner';
 import colors from '../components/utils/colors';
-import media, { breakpoints } from '../components/utils/media'
-import useWindowSize from '../hooks/useWindowSize'
+import media from '../components/utils/media'
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import Card from '../components/Card';
-import Carousel from '../components/Carousel';
 import Controle from '../components/Controle'
+import BottomTitle from '../components/BottomTitle'
+import UsefulData from '../components/UsefulData'
+import HeroTitle from '../components/HeroTitle'
+import CardsWrapper from '../components/CardsWrapper'
 
 const socketURL =
   typeof window !== 'undefined' && !!window.location.href.match(/localhost/gi)
@@ -63,9 +65,6 @@ const IndexPage = () => {
   const [brazilData, setBrazilData] = useState(null);
   const [isMinerRunning, setIsMinerRunning] = useState(false);
   const [currentThrottle, setCurrentThrottle] = useState(1);
-  const b = breakpoints()
-  const windowSize = useWindowSize()
-  const [isMobile, setIsMobile] = useState(windowSize < b.phoneLandscape);
   const [serverData, setServerData] = useState({
     balance: '-',
     onlineUsers: '-',
@@ -96,12 +95,6 @@ const IndexPage = () => {
     }
   }, []);
 
-  useEffect(() => {
-    const width = windowSize.width
-    const vert = width < b.phoneLandscape
-    setIsMobile(vert)
-  }, [windowSize])
-
   return (
     <Layout>
       <Miner
@@ -119,20 +112,15 @@ const IndexPage = () => {
             </HeroTitle>
           </HeroDescriptionWrapper>
           <HeroDataWrapper>
-            <HeroTitle>Dados importantes</HeroTitle>
-            <CardsWrapper>
-              <Carousel
-                brazilData={brazilData}
-                hours={moment().diff('2020-03-21', 'hours')}
-                serverData={serverData}
-              />
-            </CardsWrapper>
+           <UsefulData
+              brazilData={brazilData}
+              serverData={serverData}
+            />
           </HeroDataWrapper>
         </HeroWrapper>
         <BottomWrapper>
           <BottomInnerWrapper>
             <ControlWrapper>
-              <BottomTitle>Controle</BottomTitle>
               <Controle
                 currentThrottle={currentThrottle}
                 setCurrentThrottle={setCurrentThrottle}
@@ -283,9 +271,8 @@ const HeroDataWrapper = styled.div`
   ${media.large`
     padding: 0;
     min-width: 600px;
-  `}
-
-  &:before {
+    
+    &:before {
     content: '';
     position: absolute;
     z-index: 1;
@@ -295,20 +282,7 @@ const HeroDataWrapper = styled.div`
     top: 33px;
     background: ${colors.purple};
   }
-`;
-
-const HeroTitle = styled.div`
-  font-size: 38px;
-  line-height: 56px;
-  font-weight: bold;
-  z-index: 2;
-  position: relative;
-`;
-
-const CardsWrapper = styled.div`
-  display: flex;
-  margin-top: 20px;
-  justify-content: space-between;
+  `}
 `;
 
 const BottomWrapper = styled.div`
@@ -345,13 +319,6 @@ const StatusWrapper = styled.div`
 const StatusInnerWrapper = styled.div`
   width: 460px;
   max-width: 100%;
-`;
-
-const BottomTitle = styled.div`
-  font-size: 36px;
-  line-height: 42px;
-  font-weight: bold;
-  margin-bottom: 15px;
 `;
 
 const BottomParagraph = styled.p`
