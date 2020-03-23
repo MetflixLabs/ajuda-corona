@@ -3,7 +3,6 @@ import { navigate } from 'gatsby';
 import styled from 'styled-components';
 import axios from 'axios';
 import Timer from 'react-compound-timer';
-import moment from 'moment';
 import io from 'socket.io-client';
 
 import powerButtonIcon from '@src/images/icons/powerButton.svg';
