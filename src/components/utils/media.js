@@ -12,6 +12,14 @@ export const sizes = {
   ultrawide: ['min', 2560],
 };
 
+export const breakpoints = () => {
+  let breakpoints = {}
+  for(let b in sizes) {
+    breakpoints[b] = sizes[b][1] 
+  }
+  return breakpoints
+}
+
 const media = Object.keys(sizes).reduce((acc, label) => {
   acc[label] = (...args) => css`
     @media (${sizes[label][0]}-width: ${sizes[label][1]}px) {

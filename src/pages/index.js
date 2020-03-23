@@ -11,6 +11,7 @@ import loadingIcon from '../images/icons/loading.svg';
 
 import Miner from '../components/core/Miner';
 import colors from '../components/utils/colors';
+import media from '../components/utils/media'
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import Card from '../components/Card';
@@ -250,15 +251,19 @@ const IndexPage = () => {
 
 const Wrapper = styled.div`
   background: ${colors.lightGray};
-  min-width: 1160px;
 `;
 
 const HeroWrapper = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   max-width: 1200px;
-  padding: 40px;
+  padding: 40px 40px 10px 40px;
   margin: auto;
+  ${media.large`
+    flex-direction: row;
+    align-items: center;
+  `}
 `;
 
 const HeroDescriptionWrapper = styled.div`
@@ -269,7 +274,12 @@ const HeroDescriptionWrapper = styled.div`
 
 const HeroDataWrapper = styled.div`
   position: relative;
-  min-width: 600px;
+  margin: 40px 0 20px 0;
+
+  ${media.large`
+    padding: 0;
+    min-width: 600px;
+  `}
 
   &:before {
     content: '';
@@ -299,16 +309,21 @@ const CardsWrapper = styled.div`
 
 const BottomWrapper = styled.div`
   background: ${colors.purple};
-  padding: 110px 40px;
+  padding: 60px 40px;
 `;
 
 const BottomInnerWrapper = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: flex-end;
+  align-items: center;
   justify-content: space-around;
   max-width: 1200px;
   margin: auto;
   padding: 0 40px;
+  ${media.large`
+  flex-direction: row;
+  `}
 `;
 
 const ControlWrapper = styled.div``;
@@ -317,6 +332,10 @@ const StatusWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 40px 0;
+  ${media.large`
+    margin: 0;
+  `}
 `;
 
 const StatusInnerWrapper = styled.div`
