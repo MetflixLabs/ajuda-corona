@@ -6,7 +6,7 @@ import colors from '@utils/colors';
 
 import HeroTitle from '@components/HeroTitle';
 
-import UsefulData from '@sections/UsefulData';
+import InformationCarousel from '@sections/InformationCarousel';
 
 export default ({ brazilData, serverData }) => (
   <HeroWrapper>
@@ -17,7 +17,7 @@ export default ({ brazilData, serverData }) => (
       </HeroTitle>
     </HeroDescriptionWrapper>
     <HeroDataWrapper>
-      <UsefulData brazilData={brazilData} serverData={serverData} />
+      <InformationCarousel brazilData={brazilData} serverData={serverData} />
     </HeroDataWrapper>
   </HeroWrapper>
 );

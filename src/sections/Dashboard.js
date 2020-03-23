@@ -14,8 +14,6 @@ import loadingIcon from '@src/images/icons/loading.svg';
 import Card from '@src/components/Card';
 import Controle from '@src/components/Controle';
 import BottomTitle from '@src/components/BottomTitle';
-import UsefulData from '@sections/UsefulData';
-import HeroTitle from '@src/components/HeroTitle';
 import CardsWrapper from '@src/components/CardsWrapper';
 
 export default () => {
