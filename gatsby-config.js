@@ -58,6 +58,7 @@ module.exports = {
           "@layouts": path.resolve(__dirname, 'src/layouts'),
           "@pages": path.resolve(__dirname, 'src/pages'),
           "@sections": path.resolve(__dirname, 'src/sections'),
+          "@utils": path.resolve(__dirname, 'src/components/utils'),
         },
         extensions: [
           "js",
