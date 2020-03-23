@@ -32,6 +32,7 @@
   },
   "devDependencies": {
     "husky": "^4.2.3",
+    "lint-staged": "^10.0.8",
     "prettier": "^1.19.1"
   },
   "keywords": [
@@ -56,7 +57,14 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run format"
+      "pre-commit": "lint-staged"
     }
+  },
+  "lint-staged": {
+    "{src,__{tests,mocks}__}/**/*.js": [
+      "prettier --single-quote --trailing-comma es5 --write",
+      "eslint --fix",
+      "git add"
+    ]
   }
 }
