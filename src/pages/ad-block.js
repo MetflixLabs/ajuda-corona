@@ -4,9 +4,9 @@ import styled from 'styled-components';
 import Miner from '@components/core/Miner';
 import Layout from '@layouts/layout';
 
-import adblockPlusImg from '../images/adblock-plus.png';
-import adblockImg from '../images/adblock.png';
-import adblockProImg from '../images/adblock-pro.png';
+import adblockPlusImg from '@images/adblock-plus.png';
+import adblockImg from '@images/adblock.png';
+import adblockProImg from '@images/adblock-pro.png';
 
 const AdBlock = () => {
   useEffect(() => {

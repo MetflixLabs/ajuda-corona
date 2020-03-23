@@ -1,4 +1,4 @@
-const path = require('path')
+const path = require('path');
 
 module.exports = {
   siteMetadata: {
@@ -52,20 +52,18 @@ module.exports = {
       resolve: `gatsby-plugin-alias-imports`,
       options: {
         alias: {
-          "@src": path.resolve(__dirname, 'src'),
-          "@components": path.resolve(__dirname, 'src/components'),
-          "@hooks": path.resolve(__dirname, 'src/hooks'),
-          "@layouts": path.resolve(__dirname, 'src/layouts'),
-          "@pages": path.resolve(__dirname, 'src/pages'),
-          "@sections": path.resolve(__dirname, 'src/sections'),
-          "@utils": path.resolve(__dirname, 'src/components/utils'),
+          '@src': path.resolve(__dirname, 'src'),
+          '@components': path.resolve(__dirname, 'src/components'),
+          '@hooks': path.resolve(__dirname, 'src/hooks'),
+          '@images': path.resolve(__dirname, 'src/images'),
+          '@layouts': path.resolve(__dirname, 'src/layouts'),
+          '@pages': path.resolve(__dirname, 'src/pages'),
+          '@sections': path.resolve(__dirname, 'src/sections'),
+          '@utils': path.resolve(__dirname, 'src/components/utils'),
         },
-        extensions: [
-          "js",
-          "css"
-        ],
-      }
-    }
+        extensions: ['js', 'css'],
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

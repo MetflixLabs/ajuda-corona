@@ -7,7 +7,7 @@ import media, { breakpoints } from '@utils/media';
 import useWindowSize from '@hooks/useWindowSize';
 import Card from '@components/Card';
 
-import arrowIcon from '../images/icons/arrow.svg';
+import arrowIcon from '@images/icons/arrow.svg';
 
 export default ({ brazilData, hours, serverData }) => {
   const { balance, onlineUsers } = serverData;

@@ -6,9 +6,9 @@ import colors from '@utils/colors';
 import media, { breakpoints } from '@utils/media';
 import useWindowSize from '@hooks/useWindowSize';
 
-import sneezingEmojiIcon from '../images/icons/sneezingEmoji.svg';
-import thermoEmojiIcon from '../images/icons/thermoEmoji.svg';
-import maskEmojiIcon from '../images/icons/maskEmoji.svg';
+import sneezingEmojiIcon from '@images/icons/sneezingEmoji.svg';
+import thermoEmojiIcon from '@images/icons/thermoEmoji.svg';
+import maskEmojiIcon from '@images/icons/maskEmoji.svg';
 
 const formatThrottle = value => {
   if (value <= 10) return 0.9;
