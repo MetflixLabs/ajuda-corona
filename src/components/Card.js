@@ -34,7 +34,7 @@ const CardTitle = styled.div`
 const CardDescription = styled.div`
   color: ${props => (props.isPurple ? colors.gray : colors.purple)};
   font-weight: bold;
-  font-size: ${props => (props.isPurple ? '48px' : '36px')};
+  font-size: ${props => (props.isPurple ? '48px' : '33px')};
   line-height: 42px;
 `;
 
