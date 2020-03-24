@@ -3,11 +3,13 @@ import styled from 'styled-components';
 import axios from 'axios';
 import io from 'socket.io-client';
 
+import checkMobileRes from '@hooks/checkMobileRes';
 import colors from '@components/utils/colors';
 import Layout from '@layouts/layout';
 import SEO from '@components/seo';
 
 import Hero from '@sections/Hero';
+import Mobile from '@sections/Mobile';
 import Dashboard from '@sections/Dashboard';
 import Disclaimer from '@sections/Disclaimer';
 
@@ -22,6 +24,7 @@ const socket = io.connect(socketURL, {
 
 const IndexPage = () => {
   const [brazilData, setBrazilData] = useState(null);
+  const isMobile = checkMobileRes();
 
   const [serverData, setServerData] = useState({
     balance: '-',
@@ -57,11 +60,20 @@ const IndexPage = () => {
     <Layout>
       <SEO title="Ajuda Corona - @MetflixLabs" />
       <Wrapper>
-        <Hero brazilData={brazilData} serverData={serverData} />
-        <BottomWrapper>
-          <Dashboard />
-          <Disclaimer />
-        </BottomWrapper>
+        {isMobile ? (
+          <>
+            <Hero brazilData={brazilData} serverData={serverData}></Hero>
+            <Dashboard />
+          </>
+        ) : (
+          <>
+            <Hero brazilData={brazilData} serverData={serverData}></Hero>
+            <BottomWrapper>
+              <Dashboard />
+              <Disclaimer />
+            </BottomWrapper>
+          </>
+        )}
       </Wrapper>
     </Layout>
   );
