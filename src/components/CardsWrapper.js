@@ -1,9 +1,14 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
+import media from '@utils/media';
 
 const CardsWrapper = styled.div`
   display: flex;
-  margin-top: 20px;
-  justify-content: space-between;
+  flex-direction: column;
+
+  ${media.phoneLandscape`
+    margin-top: 20px;
+    justify-content: space-between;
+  `};
 `;
 
-export default CardsWrapper
+export default CardsWrapper;

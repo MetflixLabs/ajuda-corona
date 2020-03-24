@@ -36,7 +36,7 @@ export default ({ currentThrottle, setCurrentThrottle }) => {
                 setCurrentThrottle={setCurrentThrottle}
               />
             }
-            isPurple
+            isDash
           ></Card>
         </>
       )}

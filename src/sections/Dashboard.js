@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { navigate } from 'gatsby';
 
-import Timer from 'react-compound-timer';
-
 import Miner from '@components/core/Miner';
 
 import media from '@utils/media';
@@ -11,10 +9,8 @@ import media from '@utils/media';
 import powerButtonIcon from '@src/images/icons/powerButton.svg';
 import loadingIcon from '@src/images/icons/loading.svg';
 
-import Card from '@components/Card';
 import Controle from '@components/Controle';
-import BottomTitle from '@components/BottomTitle';
-import CardsWrapper from '@components/CardsWrapper';
+import Status from '@components/Status';
 
 export default () => {
   const [isAdblocked, setIsAdblocked] = useState(false);
@@ -65,39 +61,7 @@ export default () => {
             setCurrentThrottle={setCurrentThrottle}
           />
         </ControlWrapper>
-        <StatusWrapper>
-          <StatusInnerWrapper>
-            <BottomTitle>Status</BottomTitle>
-            <CardsWrapper>
-              <Card
-                title="Força"
-                description={isMinerRunning ? `${currentThrottle}%` : '-'}
-                isPurple
-              ></Card>
-              <Card
-                title="Tempo"
-                description={
-                  isMinerRunning ? (
-                    <Timer
-                      formatValue={value =>
-                        `${value < 10 ? `0${value}` : value}`
-                      }
-                    >
-                      <Timer.Hours />
-                      {':'}
-                      <Timer.Minutes />
-                      {':'}
-                      <Timer.Seconds />
-                    </Timer>
-                  ) : (
-                    '-'
-                  )
-                }
-                isPurple
-              ></Card>
-            </CardsWrapper>
-          </StatusInnerWrapper>
-        </StatusWrapper>
+        <Status />
       </BottomInnerWrapper>
       <PowerWrapper>
         <PowerButton
@@ -128,21 +92,6 @@ const BottomInnerWrapper = styled.div`
 `;
 
 const ControlWrapper = styled.div``;
-const StatusWrapper = styled.div`
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 40px 0;
-  ${media.large`
-    margin: 0;
-  `}
-`;
-
-const StatusInnerWrapper = styled.div`
-  width: 460px;
-  max-width: 100%;
-`;
 
 const PowerWrapper = styled.div`
   text-align: right;

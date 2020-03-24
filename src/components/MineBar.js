@@ -101,7 +101,7 @@ const StyledSlider = styled(Slider)`
   .rc-slider-track {
     background: ${colors.gray};
     z-index: 3;
-    width: 20px;
+    width: 15px;
     border-radius: 8px;
 
     ${media.phoneLandscape`
@@ -119,7 +119,7 @@ const StyledSlider = styled(Slider)`
     background-size: cover;
     background-repeat: no-repeat;
     position: absolute;
-    left: -8px;
+    left: -10px;
     margin-top: -8px;
     width: 35px;
     height: 35px;
