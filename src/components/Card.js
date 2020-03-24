@@ -32,7 +32,7 @@ const Wrapper = styled.div`
   ${media.phoneLandscape`
     width: auto;
     max-width: ${props => (props.isDash ? '500px' : '250px')};
-    min-width: ${props => (props.isDash ? '250px' : '160px')};
+    min-width: ${props => (props.isDash ? '205px' : '250px')};
     min-height: 185px;
     background: ${props => (props.isDash ? colors.purple : colors.white)};
   `}
