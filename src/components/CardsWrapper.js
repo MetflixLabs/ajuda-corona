@@ -6,6 +6,7 @@ const CardsWrapper = styled.div`
   flex-direction: column;
 
   ${media.phoneLandscape`
+    flex-direction: row;
     margin-top: 20px;
     justify-content: space-between;
   `};
