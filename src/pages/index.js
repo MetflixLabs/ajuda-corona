@@ -82,7 +82,7 @@ const IndexPage = () => {
       setBrazilData(false);
 
       axios
-        .get('//coronavirus-tracker-api.herokuapp.com/v2/locations/35')
+        .get('//coronavirus-tracker-api.herokuapp.com/v2/locations/28')
         .then(res => {
           const { latest } = res.data.location;
 
