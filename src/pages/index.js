@@ -9,7 +9,6 @@ import Layout from '@layouts/layout';
 import SEO from '@components/seo';
 
 import Hero from '@sections/Hero';
-import Mobile from '@sections/Mobile';
 import Dashboard from '@sections/Dashboard';
 import Disclaimer from '@sections/Disclaimer';
 

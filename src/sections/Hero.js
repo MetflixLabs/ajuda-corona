@@ -5,8 +5,8 @@ import media from '@utils/media';
 import colors from '@utils/colors';
 
 import HeroTitle from '@components/HeroTitle';
-
 import InformationCarousel from '@components/InformationCarousel';
+import MineBar from '@components/MineBar';
 
 export default ({ brazilData, serverData }) => (
   <HeroWrapper>
@@ -27,9 +27,10 @@ const HeroWrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   max-width: 1200px;
-  padding: 40px 40px 10px 40px;
   margin: auto;
+  padding: 20px;
   ${media.large`
+    padding: 40px 40px 10px 40px;
     flex-direction: row;
     align-items: center;
   `}

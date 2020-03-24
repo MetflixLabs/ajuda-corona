@@ -63,8 +63,8 @@ const InnerWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  min-width: 400px;
   ${media.phoneLandscape`
+    min-width: 400px;
     justify-content: center;
   `}
 `;
@@ -74,7 +74,7 @@ const StyledSlider = styled(Slider)`
   position: relative;
   height: 300px;
   padding: 5px 0;
-  min-width: 15px;
+  min-width: 10px;
   border-radius: 8px;
   -ms-touch-action: none;
   touch-action: none;
@@ -101,7 +101,7 @@ const StyledSlider = styled(Slider)`
   .rc-slider-track {
     background: ${colors.gray};
     z-index: 3;
-    width: 15px;
+    width: 10px;
     border-radius: 8px;
 
     ${media.phoneLandscape`
@@ -119,7 +119,7 @@ const StyledSlider = styled(Slider)`
     background-size: cover;
     background-repeat: no-repeat;
     position: absolute;
-    left: -10px;
+    left: -12px;
     margin-top: -8px;
     width: 35px;
     height: 35px;

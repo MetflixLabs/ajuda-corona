@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import styled from 'styled-components';
 import { navigate } from 'gatsby';
 
@@ -85,9 +85,9 @@ const BottomInnerWrapper = styled.div`
   justify-content: space-around;
   max-width: 1200px;
   margin: auto;
-  padding: 0 40px;
   ${media.large`
-  flex-direction: row;
+    padding: 0 40px;
+    flex-direction: row;
   `}
 `;
 

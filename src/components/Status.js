@@ -69,8 +69,10 @@ const StatusWrapper = styled.div`
 `;
 
 const StatusInnerWrapper = styled.div`
-  width: 460px;
-  max-width: 100%;
+  ${media.phoneLandscape`
+    max-width: 100%;
+    width: 460px;
+  `}
 `;
 
 const Label = styled(BottomTitle)`
