@@ -5,6 +5,8 @@ import Carousel from 'nuka-carousel';
 import colors from '@utils/colors';
 import media, { breakpoints } from '@utils/media';
 import useWindowSize from '@hooks/useWindowSize';
+import checkMobileRes from '@hooks/checkMobileRes';
+
 import Card from '@components/Card';
 
 import arrowIcon from '@images/icons/arrow.svg';
@@ -14,16 +16,17 @@ export default ({ brazilData, hours, serverData }) => {
   const [slidesToShow, setSlidesToShow] = useState(2);
   const b = breakpoints();
   const windowSize = useWindowSize();
+  const isMobile = checkMobileRes();
   const params = {
     dragging: true,
     slidesToShow,
-    cellSpacing: 10,
+    cellSpacing: isMobile ? 20 : 30,
     slidesToScroll: 1,
   };
 
   useEffect(() => {
     const width = windowSize.width;
-    if (width < b.phoneLandscape) return setSlidesToShow(1);
+    if (width < b.phoneLandscape) return setSlidesToShow(2);
     if (width < b.tablet) return setSlidesToShow(2);
     if (width < b.desktop) return setSlidesToShow(3);
     if (width < b.large) return setSlidesToShow(4);
