@@ -4,23 +4,28 @@ import styled from 'styled-components';
 import media from '@utils/media';
 import colors from '@utils/colors';
 
+import checkMobileRes from '@hooks/checkMobileRes';
+
 import HeroTitle from '@components/HeroTitle';
 import InformationCarousel from '@components/InformationCarousel';
-import MineBar from '@components/MineBar';
 
-export default ({ brazilData, serverData }) => (
-  <HeroWrapper>
-    <HeroDescriptionWrapper>
-      <HeroTitle>
-        Nos ajude a minerar criptomoedas que serão doadas na causa contra a
-        COVID-19.
-      </HeroTitle>
-    </HeroDescriptionWrapper>
-    <HeroDataWrapper>
-      <InformationCarousel brazilData={brazilData} serverData={serverData} />
-    </HeroDataWrapper>
-  </HeroWrapper>
-);
+export default ({ brazilData, serverData }) => {
+  const isMobile = checkMobileRes();
+
+  return (
+    <HeroWrapper>
+      <HeroDescriptionWrapper>
+        <HeroTitle>
+          Nos ajude a minerar criptomoedas que serão doadas na causa contra a
+          COVID-19.
+        </HeroTitle>
+      </HeroDescriptionWrapper>
+      <HeroDataWrapper>
+        <InformationCarousel brazilData={brazilData} serverData={serverData} />
+      </HeroDataWrapper>
+    </HeroWrapper>
+  );
+};
 
 const HeroWrapper = styled.div`
   display: flex;

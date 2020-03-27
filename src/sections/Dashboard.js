@@ -1,6 +1,5 @@
-import React, { useState, useContext } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { navigate } from 'gatsby';
 
 import Miner from '@components/core/Miner';
 
@@ -12,41 +11,15 @@ import loadingIcon from '@src/images/icons/loading.svg';
 import Controle from '@components/Controle';
 import Status from '@components/Status';
 
-export default () => {
-  const [isAdblocked, setIsAdblocked] = useState(false);
-  const [isMinerReady, setIsMinerReady] = useState(false);
-  const [isMinerRunning, setIsMinerRunning] = useState(false);
-  const [currentThrottle, setCurrentThrottle] = useState(1);
-
-  const toggleMiner = (isAdblocked, isMinerRunning, setIsMinerRunning) => {
-    if (isAdblocked) {
-      return navigate('/ad-block');
-    }
-
-    if (isMinerRunning) {
-      window.miner.stop();
-
-      window.gtag &&
-        window.gtag('event', 'click', {
-          event_label: 'power-button-stop',
-          event_category: 'power-button',
-          non_interaction: 1,
-        });
-
-      return setIsMinerRunning(false);
-    }
-
-    window.gtag &&
-      window.gtag('event', 'click', {
-        event_label: 'power-button-start',
-        event_category: 'power-button',
-        non_interaction: 1,
-      });
-
-    window.miner.start();
-    setIsMinerRunning(true);
-  };
-
+export default ({
+  setIsAdblocked,
+  isMinerReady,
+  setIsMinerReady,
+  isMinerRunning,
+  currentThrottle,
+  setCurrentThrottle,
+  startMining,
+}) => {
   return (
     <>
       <Miner
@@ -61,14 +34,14 @@ export default () => {
             setCurrentThrottle={setCurrentThrottle}
           />
         </ControlWrapper>
-        <Status />
+        <Status
+          isMinerRunning={isMinerRunning}
+          currentThrottle={currentThrottle}
+        />
       </BottomInnerWrapper>
       <PowerWrapper>
         <PowerButton
-          onClick={() =>
-            isMinerReady &&
-            toggleMiner(isAdblocked, isMinerRunning, setIsMinerRunning)
-          }
+          onClick={() => startMining()}
           src={isMinerReady ? powerButtonIcon : loadingIcon}
           isMinerRunning={isMinerRunning}
         />
