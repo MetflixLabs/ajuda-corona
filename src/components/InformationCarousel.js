@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
-import { breakpoints } from '@utils/media';
-import useWindowSize from '@hooks/useWindowSize';
+import checkMobileRes from '@hooks/checkMobileRes';
 import moment from 'moment';
 
 import HeroTitle from '@components/HeroTitle';
@@ -9,16 +8,7 @@ import CardsWrapper from '@components/CardsWrapper';
 import Carousel from '@components/Carousel';
 
 export default ({ brazilData, serverData }) => {
-  const b = breakpoints();
-  const windowSize = useWindowSize();
-  const [isMobile, setIsMobile] = useState(windowSize < b.phoneLandscape);
-
-  useEffect(() => {
-    const width = windowSize.width;
-    const vert = width < b.phoneLandscape;
-    setIsMobile(vert);
-  }, [windowSize]);
-
+  const isMobile = checkMobileRes();
   return (
     <>
       {isMobile ? (

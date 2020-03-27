@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
-import media, { breakpoints } from '@utils/media';
-import useWindowSize from '@hooks/useWindowSize';
+import media from '@utils/media';
+import checkMobileRes from '@hooks/checkMobileRes';
 
 import Timer from 'react-compound-timer';
 
@@ -11,14 +11,7 @@ import CardsWrapper from '@components/CardsWrapper';
 import Card from '@components/Card';
 
 export default ({ isMinerRunning, currentThrottle }) => {
-  const [isMobile, setIsMobile] = useState(false);
-  const windowSize = useWindowSize();
-  const b = breakpoints();
-
-  useEffect(() => {
-    const isMobile = windowSize.width < b.phoneLandscape;
-    setIsMobile(isMobile);
-  }, [windowSize]);
+  const isMobile = checkMobileRes();
 
   return (
     <StatusWrapper>

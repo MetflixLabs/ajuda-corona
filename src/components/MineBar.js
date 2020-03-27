@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Slider from 'rc-slider';
 
 import colors from '@utils/colors';
-import media, { breakpoints } from '@utils/media';
-import useWindowSize from '@hooks/useWindowSize';
+import media from '@utils/media';
+
+import checkMobileRes from '@hooks/checkMobileRes';
 
 import sneezingEmojiIcon from '@images/icons/sneezingEmoji.svg';
 import thermoEmojiIcon from '@images/icons/thermoEmoji.svg';
@@ -24,22 +25,13 @@ const formatThrottle = value => {
 };
 
 const MineBar = ({ currentThrottle, setCurrentThrottle }) => {
-  const b = breakpoints();
-  const windowSize = useWindowSize();
-
-  const [vertical, setVertical] = useState(false);
-
-  useEffect(() => {
-    const width = windowSize.width;
-    const vert = width < b.phoneLandscape;
-    setVertical(vert);
-  }, [windowSize]);
+  const isMobile = checkMobileRes();
 
   return (
     <Wrapper>
       <InnerWrapper>
         <StyledSlider
-          vertical={vertical}
+          vertical={isMobile}
           defaultValue={33}
           min={1}
           step={1}
