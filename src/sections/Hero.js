@@ -4,13 +4,13 @@ import styled from 'styled-components';
 import media from '@utils/media';
 import colors from '@utils/colors';
 
-import checkMobileRes from '@hooks/checkMobileRes';
+import useMobileRes from '@hooks/useMobileRes';
 
 import HeroTitle from '@components/HeroTitle';
 import InformationCarousel from '@components/InformationCarousel';
 
 export default ({ brazilData, serverData }) => {
-  const isMobile = checkMobileRes();
+  const isMobile = useMobileRes();
 
   return (
     <HeroWrapper>

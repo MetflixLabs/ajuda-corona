@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 import colors from '@utils/colors';
 import media, { breakpoints } from '@utils/media';
 import useWindowSize from '@hooks/useWindowSize';
-import checkMobileRes from '@hooks/checkMobileRes';
+import useMobileRes from '@hooks/useMobileRes';
 
 import Card from '@components/Card';
 
@@ -20,7 +20,7 @@ export default ({ hours }) => {
   const [slidesToShow, setSlidesToShow] = useState(2);
   const b = breakpoints();
   const windowSize = useWindowSize();
-  const isMobile = checkMobileRes();
+  const isMobile = useMobileRes();
   const params = {
     dragging: true,
     slidesToShow,

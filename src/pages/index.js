@@ -11,7 +11,7 @@ import {
   setIsMinerRunning,
 } from '@store/actions';
 
-import checkMobileRes from '@hooks/checkMobileRes';
+import useMobileRes from '@hooks/useMobileRes';
 import colors from '@components/utils/colors';
 import Layout from '@layouts/layout';
 import SEO from '@components/seo';
@@ -31,7 +31,7 @@ const socket = io.connect(socketURL, {
 });
 
 const IndexPage = () => {
-  const isMobile = checkMobileRes();
+  const isMobile = useMobileRes();
   const dispatch = useDispatch();
 
   const configs = useSelector(state => state);

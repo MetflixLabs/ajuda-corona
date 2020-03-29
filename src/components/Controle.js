@@ -1,13 +1,13 @@
 import React from 'react';
 
-import checkMobileRes from '@hooks/checkMobileRes';
+import useMobileRes from '@hooks/useMobileRes';
 
 import Card from '@components/Card';
 import MineBar from '@components/MineBar';
 import BottomTitle from '@components/BottomTitle';
 
 export default () => {
-  const isMobile = checkMobileRes();
+  const isMobile = useMobileRes();
 
   return (
     <>

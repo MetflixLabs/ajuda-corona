@@ -8,7 +8,7 @@ import { setCurrentThrottle } from '@store/actions';
 import colors from '@utils/colors';
 import media from '@utils/media';
 
-import checkMobileRes from '@hooks/checkMobileRes';
+import useMobileRes from '@hooks/useMobileRes';
 
 import sneezingEmojiIcon from '@images/icons/sneezingEmoji.svg';
 import thermoEmojiIcon from '@images/icons/thermoEmoji.svg';
@@ -28,7 +28,7 @@ const formatThrottle = value => {
 };
 
 const MineBar = () => {
-  const isMobile = checkMobileRes();
+  const isMobile = useMobileRes();
 
   const configs = useSelector(state => state);
   const { currentThrottle } = configs;

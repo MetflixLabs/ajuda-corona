@@ -1,6 +1,6 @@
 import React from 'react';
 
-import checkMobileRes from '@hooks/checkMobileRes';
+import useMobileRes from '@hooks/useMobileRes';
 import moment from 'moment';
 
 import HeroTitle from '@components/HeroTitle';
@@ -8,7 +8,7 @@ import CardsWrapper from '@components/CardsWrapper';
 import Carousel from '@components/Carousel';
 
 export default () => {
-  const isMobile = checkMobileRes();
+  const isMobile = useMobileRes();
   return (
     <>
       {isMobile ? (

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { useSelector } from 'react-redux';
 
 import media from '@utils/media';
-import checkMobileRes from '@hooks/checkMobileRes';
+import useMobileRes from '@hooks/useMobileRes';
 
 import Timer from 'react-compound-timer';
 
@@ -13,7 +13,7 @@ import CardsWrapper from '@components/CardsWrapper';
 import Card from '@components/Card';
 
 export default () => {
-  const isMobile = checkMobileRes();
+  const isMobile = useMobileRes();
   const configs = useSelector(state => state);
   const { isMinerRunning, currentThrottle } = configs;
 
