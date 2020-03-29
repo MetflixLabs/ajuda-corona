@@ -35,7 +35,7 @@ const IndexPage = () => {
   const dispatch = useDispatch();
 
   const configs = useSelector(state => state);
-  const { isAdblocked, isMinerReady, isMinerRunning, brazilData } = configs;
+  const { isAdblocked, isMinerRunning, brazilData } = configs;
 
   socket.on('serverData', data => {
     setServerData(data);
