@@ -21,6 +21,8 @@ import Dashboard from '@sections/Dashboard';
 import Disclaimer from '@sections/Disclaimer';
 import Mobile from '@sections/Mobile';
 
+import Miner from '@components/core/Miner';
+
 const socketURL =
   typeof window !== 'undefined' && !!window.location.href.match(/localhost/gi)
     ? 'http://localhost:3000'
@@ -96,6 +98,7 @@ const IndexPage = () => {
   return (
     <Layout>
       <SEO title="Ajuda Corona - @MetflixLabs" />
+      <Miner />
       <Wrapper>
         {isMobile ? (
           <>

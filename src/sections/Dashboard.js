@@ -3,8 +3,6 @@ import styled from 'styled-components';
 
 import { useSelector } from 'react-redux';
 
-import Miner from '@components/core/Miner';
-
 import media from '@utils/media';
 
 import powerButtonIcon from '@src/images/icons/powerButton.svg';
@@ -19,7 +17,6 @@ export default ({ startMining }) => {
 
   return (
     <>
-      <Miner />
       <BottomInnerWrapper>
         <ControlWrapper>
           <Controle />
