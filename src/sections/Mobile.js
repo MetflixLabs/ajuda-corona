@@ -6,11 +6,11 @@ import Hero from '@sections/Hero';
 import Controle from '@components/Controle';
 import InformationCarousel from '@components/InformationCarousel';
 
-export default () => (
+export default ({ startMining }) => (
   <MobileWrapper>
     <Hero />
     <ControlWrapper>
-      <Controle />
+      <Controle startMining={startMining} />
       <InformationCarousel />
     </ControlWrapper>
   </MobileWrapper>

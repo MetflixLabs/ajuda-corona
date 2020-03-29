@@ -8,6 +8,7 @@ import media from '@utils/media';
 import powerButtonIcon from '@src/images/icons/powerButton.svg';
 import loadingIcon from '@src/images/icons/loading.svg';
 
+import PowerButton from '@components/PowerButton';
 import Controle from '@components/Controle';
 import Status from '@components/Status';
 
@@ -23,13 +24,7 @@ export default ({ startMining }) => {
         </ControlWrapper>
         <Status />
       </BottomInnerWrapper>
-      <PowerWrapper>
-        <PowerButton
-          onClick={() => startMining()}
-          src={isMinerReady ? powerButtonIcon : loadingIcon}
-          isMinerRunning={isMinerRunning}
-        />
-      </PowerWrapper>
+      <PowerButton startMining={startMining} />
     </>
   );
 };
@@ -55,9 +50,4 @@ const PowerWrapper = styled.div`
   max-width: 1200px;
   margin: auto;
   padding: 40px 40px 0;
-`;
-
-const PowerButton = styled.img`
-  cursor: pointer;
-  opacity: ${props => (props.isMinerRunning ? '0.2' : '1')};
 `;
