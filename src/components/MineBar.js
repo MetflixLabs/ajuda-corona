@@ -40,7 +40,7 @@ const MineBar = () => {
       <InnerWrapper>
         <StyledSlider
           vertical={isMobile}
-          defaultValue={33}
+          defaultValue={currentThrottle}
           min={1}
           step={1}
           onChange={value => {
