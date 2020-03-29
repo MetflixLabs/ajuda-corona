@@ -1,20 +1,6 @@
-const INITIAL_STATE = {
-  isAdblocked: false,
-  isMinerReady: false,
-  isMinerRunning: false,
-  currentThrottle: 1,
-  brazilData: null,
-  serverData: {
-    balance: '-',
-    onlineUsers: '-',
-  },
-};
+import { INITIAL_STATE } from '@store';
 
 const reducer = (state = INITIAL_STATE, action) => {
-  // eslint-disable-next-line no-console
-  console.log(
-    `state: ${JSON.stringify(state)}, action: ${JSON.stringify(action)}`
-  );
   switch (action.type) {
     case 'SET_IS_ADBLOCKED':
       return {
