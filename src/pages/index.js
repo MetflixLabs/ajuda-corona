@@ -38,7 +38,7 @@ const IndexPage = () => {
   const { isAdblocked, isMinerRunning, brazilData } = configs;
 
   socket.on('serverData', data => {
-    setServerData(data);
+    dispatch(setServerData(data));
   });
 
   useEffect(() => {
