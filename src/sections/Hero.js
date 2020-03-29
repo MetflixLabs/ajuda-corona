@@ -20,9 +20,14 @@ export default ({ brazilData, serverData }) => {
           COVID-19.
         </HeroTitle>
       </HeroDescriptionWrapper>
-      <HeroDataWrapper>
-        <InformationCarousel brazilData={brazilData} serverData={serverData} />
-      </HeroDataWrapper>
+      {isMobile ? null : (
+        <HeroDataWrapper>
+          <InformationCarousel
+            brazilData={brazilData}
+            serverData={serverData}
+          />
+        </HeroDataWrapper>
+      )}
     </HeroWrapper>
   );
 };

@@ -3,41 +3,18 @@ import styled from 'styled-components';
 
 import Hero from '@sections/Hero';
 
-import MineBar from '@components/MineBar';
-import Miner from '@components/core/Miner';
 import Controle from '@components/Controle';
 import InformationCarousel from '@components/InformationCarousel';
 
-export default ({
-  isAdblocked,
-  setIsAdblocked,
-  isMinerReady,
-  setIsMinerReady,
-  isMinerRunning,
-  setIsMinerRunning,
-  currentThrottle,
-  setCurrentThrottle,
-  brazilData,
-  serverData,
-}) => {
-  return (
-    <MobileWrapper>
-      <Hero />
-      <ControlWrapper>
-        <Miner
-          setIsMinerReady={setIsMinerReady}
-          setIsAdblocked={setIsAdblocked}
-          currentThrottle={currentThrottle}
-        />
-        <Controle
-          currentThrottle={currentThrottle}
-          setCurrentThrottle={setCurrentThrottle}
-        />
-        <InformationCarousel brazilData={brazilData} serverData={serverData} />
-      </ControlWrapper>
-    </MobileWrapper>
-  );
-};
+export default () => (
+  <MobileWrapper>
+    <Hero />
+    <ControlWrapper>
+      <Controle />
+      <InformationCarousel />
+    </ControlWrapper>
+  </MobileWrapper>
+);
 
 const MobileWrapper = styled.div`
   display: flex;
@@ -50,4 +27,5 @@ const MobileWrapper = styled.div`
 
 const ControlWrapper = styled.div`
   display: flex;
+  flex-direction: row;
 `;
