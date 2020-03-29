@@ -6,8 +6,8 @@ function App() {
 
   return {
     width: size.width,
-    height: size.height
-  }
+    height: size.height,
+  };
 }
 
 // Hook
@@ -15,10 +15,20 @@ function useWindowSize() {
   const isClient = typeof window === 'object';
 
   function getSize() {
-    return {
-      width: isClient ? window.innerWidth : undefined,
-      height: isClient ? window.innerHeight : undefined
-    };
+    if (isClient) {
+      return {
+        width:
+          window.innerWidth < document.documentElement.clientWidth
+            ? window.innerWidth
+            : document.documentElement.clientWidth,
+        height:
+          window.innerHeight < document.documentElement.clientHeight
+            ? window.innerHeight
+            : document.documentElement.clientHeight,
+      };
+    } else {
+      return undefined;
+    }
   }
 
   const [windowSize, setWindowSize] = useState(getSize);
@@ -39,4 +49,4 @@ function useWindowSize() {
   return windowSize;
 }
 
-export default App
+export default App;
