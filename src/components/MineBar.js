@@ -35,20 +35,24 @@ const MineBar = () => {
 
   const dispatch = useDispatch();
 
-  return (
+  const sliderConfigs = {
+    vertical: isMobile,
+    defaultValue: currentThrottle,
+    currentThrottle: currentThrottle,
+    min: 1,
+    step: 1,
+    onChange: value => {
+      dispatch(setCurrentThrottle(value));
+      window.miner.setThrottle(formatThrottle(value));
+    },
+  };
+
+  return isMobile ? (
+    <StyledSlider {...sliderConfigs} />
+  ) : (
     <Wrapper>
       <InnerWrapper>
-        <StyledSlider
-          vertical={isMobile}
-          defaultValue={currentThrottle}
-          min={1}
-          step={1}
-          onChange={value => {
-            dispatch(setCurrentThrottle(value));
-            window.miner.setThrottle(formatThrottle(value));
-          }}
-          currentThrottle={currentThrottle}
-        />
+        <StyledSlider {...sliderConfigs} />
       </InnerWrapper>
     </Wrapper>
   );

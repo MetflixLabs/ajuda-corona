@@ -6,28 +6,28 @@ import colors from '@utils/colors';
 
 import useMobileRes from '@hooks/useMobileRes';
 
-import HeroTitle from '@components/HeroTitle';
+import Title from '@components/Title';
 import InformationCarousel from '@components/InformationCarousel';
 
 export default ({ brazilData, serverData }) => {
   const isMobile = useMobileRes();
 
-  return (
+  return isMobile ? (
+    <Title mb="50px">
+      Nos ajude a minerar criptomoedas que serão doadas na causa contra a
+      COVID-19.
+    </Title>
+  ) : (
     <HeroWrapper>
       <HeroDescriptionWrapper>
-        <HeroTitle>
+        <Title>
           Nos ajude a minerar criptomoedas que serão doadas na causa contra a
           COVID-19.
-        </HeroTitle>
+        </Title>
       </HeroDescriptionWrapper>
-      {isMobile ? null : (
-        <HeroDataWrapper>
-          <InformationCarousel
-            brazilData={brazilData}
-            serverData={serverData}
-          />
-        </HeroDataWrapper>
-      )}
+      <HeroDataWrapper>
+        <InformationCarousel brazilData={brazilData} serverData={serverData} />
+      </HeroDataWrapper>
     </HeroWrapper>
   );
 };

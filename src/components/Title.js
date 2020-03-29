@@ -1,7 +1,9 @@
 import styled from 'styled-components';
+import { space, typography } from 'styled-system';
+
 import media from '@utils/media';
 
-const HeroTitle = styled.div`
+const Title = styled.div`
   z-index: 2;
   position: relative;
   font-style: normal;
@@ -14,6 +16,9 @@ const HeroTitle = styled.div`
     line-height: 56px;
     font-weight: bold;
   `}
+
+  ${space}
+  ${typography}
 `;
 
-export default HeroTitle;
+export default Title;
