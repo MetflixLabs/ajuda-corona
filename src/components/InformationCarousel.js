@@ -7,27 +7,19 @@ import HeroTitle from '@components/HeroTitle';
 import CardsWrapper from '@components/CardsWrapper';
 import Carousel from '@components/Carousel';
 
-export default ({ brazilData, serverData }) => {
+export default () => {
   const isMobile = checkMobileRes();
   return (
     <>
       {isMobile ? (
         <CardsWrapper>
-          <Carousel
-            brazilData={brazilData}
-            hours={moment().diff('2020-03-21', 'hours')}
-            serverData={serverData}
-          />
+          <Carousel hours={moment().diff('2020-03-21', 'hours')} />
         </CardsWrapper>
       ) : (
         <>
           <HeroTitle>Dados importantes</HeroTitle>
           <CardsWrapper>
-            <Carousel
-              brazilData={brazilData}
-              hours={moment().diff('2020-03-21', 'hours')}
-              serverData={serverData}
-            />
+            <Carousel hours={moment().diff('2020-03-21', 'hours')} />
           </CardsWrapper>
         </>
       )}

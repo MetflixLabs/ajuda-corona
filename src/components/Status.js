@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { useSelector } from 'react-redux';
+
 import media from '@utils/media';
 import checkMobileRes from '@hooks/checkMobileRes';
 
@@ -10,8 +12,10 @@ import BottomTitle from '@components/BottomTitle';
 import CardsWrapper from '@components/CardsWrapper';
 import Card from '@components/Card';
 
-export default ({ isMinerRunning, currentThrottle }) => {
+export default () => {
   const isMobile = checkMobileRes();
+  const configs = useSelector(state => state);
+  const { isMinerRunning, currentThrottle } = configs;
 
   return (
     <StatusWrapper>

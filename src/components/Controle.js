@@ -6,27 +6,19 @@ import Card from '@components/Card';
 import MineBar from '@components/MineBar';
 import BottomTitle from '@components/BottomTitle';
 
-export default ({ currentThrottle, setCurrentThrottle }) => {
+export default () => {
   const isMobile = checkMobileRes();
 
   return (
     <>
       {isMobile ? (
-        <MineBar
-          currentThrottle={currentThrottle}
-          setCurrentThrottle={setCurrentThrottle}
-        />
+        <MineBar />
       ) : (
         <>
           <BottomTitle>Controle</BottomTitle>
           <Card
             title="Nível da sua contribuição"
-            description={
-              <MineBar
-                currentThrottle={currentThrottle}
-                setCurrentThrottle={setCurrentThrottle}
-              />
-            }
+            description={<MineBar />}
             isDash
           ></Card>
         </>

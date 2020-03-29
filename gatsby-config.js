@@ -60,6 +60,7 @@ module.exports = {
           '@pages': path.resolve(__dirname, 'src/pages'),
           '@sections': path.resolve(__dirname, 'src/sections'),
           '@utils': path.resolve(__dirname, 'src/components/utils'),
+          '@store': path.resolve(__dirname, 'src/store'),
         },
         extensions: ['js', 'css'],
       },

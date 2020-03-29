@@ -1,8 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import io from 'socket.io-client';
 import { navigate } from 'gatsby';
+import { useSelector, useDispatch } from 'react-redux';
+
+import {
+  setServerData,
+  setBrazilData,
+  setIsMinerRunning,
+} from '@store/actions';
 
 import checkMobileRes from '@hooks/checkMobileRes';
 import colors from '@components/utils/colors';
@@ -24,16 +31,11 @@ const socket = io.connect(socketURL, {
 });
 
 const IndexPage = () => {
-  const [isAdblocked, setIsAdblocked] = useState(false);
-  const [isMinerReady, setIsMinerReady] = useState(false);
-  const [isMinerRunning, setIsMinerRunning] = useState(false);
-  const [currentThrottle, setCurrentThrottle] = useState(1);
-  const [brazilData, setBrazilData] = useState(null);
   const isMobile = checkMobileRes();
-  const [serverData, setServerData] = useState({
-    balance: '-',
-    onlineUsers: '-',
-  });
+  const dispatch = useDispatch();
+
+  const configs = useSelector(state => state);
+  const { isAdblocked, isMinerReady, isMinerRunning, brazilData } = configs;
 
   socket.on('serverData', data => {
     setServerData(data);
@@ -47,20 +49,20 @@ const IndexPage = () => {
           page_path: '/',
         });
 
-      setBrazilData(false);
+      dispatch(setBrazilData(false));
 
       axios
         .get('//coronavirus-tracker-api.herokuapp.com/v2/locations/28')
         .then(res => {
           const { latest } = res.data.location;
 
-          setBrazilData(latest);
+          dispatch(setBrazilData(latest));
         })
         .catch(err => err);
     }
   }, []);
 
-  const toggleMiner = (isAdblocked, isMinerRunning, setIsMinerRunning) => {
+  const toggleMiner = () => {
     if (isAdblocked) {
       return navigate('/ad-block');
     }
@@ -75,7 +77,7 @@ const IndexPage = () => {
           non_interaction: 1,
         });
 
-      return setIsMinerRunning(false);
+      return dispatch(setIsMinerRunning(false));
     }
 
     window.gtag &&
@@ -86,11 +88,10 @@ const IndexPage = () => {
       });
 
     window.miner.start();
-    setIsMinerRunning(true);
+    dispatch(setIsMinerRunning(true));
   };
 
-  const startMining = () =>
-    isMinerReady && toggleMiner(isAdblocked, isMinerRunning, setIsMinerRunning);
+  const startMining = () => toggleMiner();
 
   return (
     <Layout>
@@ -98,32 +99,13 @@ const IndexPage = () => {
       <Wrapper>
         {isMobile ? (
           <>
-            <Mobile
-              startMining={startMining}
-              brazilData={brazilData}
-              serverData={serverData}
-              setIsAdblocked={setIsAdblocked}
-              isAdblocked={isAdblocked}
-              setIsMinerReady={setIsMinerReady}
-              isMinerReady={isMinerReady}
-              isMinerRunning={isMinerRunning}
-              setCurrentThrottle={setCurrentThrottle}
-              currentThrottle={currentThrottle}
-            />
+            <Mobile startMining={startMining} />
           </>
         ) : (
           <>
-            <Hero brazilData={brazilData} serverData={serverData}></Hero>
+            <Hero />
             <BottomWrapper>
-              <Dashboard
-                startMining={startMining}
-                setIsAdblocked={setIsAdblocked}
-                setIsMinerReady={setIsMinerReady}
-                isMinerReady={isMinerReady}
-                isMinerRunning={isMinerRunning}
-                setCurrentThrottle={setCurrentThrottle}
-                currentThrottle={currentThrottle}
-              />
+              <Dashboard startMining={startMining} />
               <Disclaimer />
             </BottomWrapper>
           </>

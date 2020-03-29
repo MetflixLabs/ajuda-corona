@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Carousel from 'nuka-carousel';
 
+import { useSelector } from 'react-redux';
+
 import colors from '@utils/colors';
 import media, { breakpoints } from '@utils/media';
 import useWindowSize from '@hooks/useWindowSize';
@@ -11,7 +13,9 @@ import Card from '@components/Card';
 
 import arrowIcon from '@images/icons/arrow.svg';
 
-export default ({ brazilData, hours, serverData }) => {
+export default ({ hours }) => {
+  const configs = useSelector(state => state);
+  const { brazilData, serverData } = configs;
   const { balance, onlineUsers } = serverData;
   const [slidesToShow, setSlidesToShow] = useState(2);
   const b = breakpoints();

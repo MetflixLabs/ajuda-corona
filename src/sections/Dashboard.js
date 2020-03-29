@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { useSelector } from 'react-redux';
+
 import Miner from '@components/core/Miner';
 
 import media from '@utils/media';
@@ -11,33 +13,18 @@ import loadingIcon from '@src/images/icons/loading.svg';
 import Controle from '@components/Controle';
 import Status from '@components/Status';
 
-export default ({
-  setIsAdblocked,
-  isMinerReady,
-  setIsMinerReady,
-  isMinerRunning,
-  currentThrottle,
-  setCurrentThrottle,
-  startMining,
-}) => {
+export default ({ startMining }) => {
+  const configs = useSelector(state => state);
+  const { isMinerReady, isMinerRunning } = configs;
+
   return (
     <>
-      <Miner
-        setIsMinerReady={setIsMinerReady}
-        setIsAdblocked={setIsAdblocked}
-        currentThrottle={currentThrottle}
-      />
+      <Miner />
       <BottomInnerWrapper>
         <ControlWrapper>
-          <Controle
-            currentThrottle={currentThrottle}
-            setCurrentThrottle={setCurrentThrottle}
-          />
+          <Controle />
         </ControlWrapper>
-        <Status
-          isMinerRunning={isMinerRunning}
-          currentThrottle={currentThrottle}
-        />
+        <Status />
       </BottomInnerWrapper>
       <PowerWrapper>
         <PowerButton

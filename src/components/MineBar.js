@@ -2,6 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import Slider from 'rc-slider';
 
+import { useSelector, useDispatch } from 'react-redux';
+import { setCurrentThrottle } from '@store/actions';
+
 import colors from '@utils/colors';
 import media from '@utils/media';
 
@@ -24,8 +27,13 @@ const formatThrottle = value => {
   if (value <= 100) return 0;
 };
 
-const MineBar = ({ currentThrottle, setCurrentThrottle }) => {
+const MineBar = () => {
   const isMobile = checkMobileRes();
+
+  const configs = useSelector(state => state);
+  const { currentThrottle } = configs;
+
+  const dispatch = useDispatch();
 
   return (
     <Wrapper>
@@ -36,7 +44,7 @@ const MineBar = ({ currentThrottle, setCurrentThrottle }) => {
           min={1}
           step={1}
           onChange={value => {
-            setCurrentThrottle(value);
+            dispatch(setCurrentThrottle(value));
             window.miner.setThrottle(formatThrottle(value));
           }}
           currentThrottle={currentThrottle}
