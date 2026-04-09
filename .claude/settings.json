@@ -1,0 +1,34 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cat >> lessons/**/*)",
+      "Bash(mkdir -p lessons/*)",
+      "Bash(ls lessons/**/*)",
+      "Edit(lessons/**/*)",
+      "Write(lessons/**/*)",
+      "Read(lessons/**/*)",
+      "Read(.claude/rules/*)",
+      "Edit(/Users/lucastavares/.claudio/workspaces/MetflixLabs/ajuda-corona/../ajuda-corona-worktrees/*/lessons/**/*)",
+      "Write(/Users/lucastavares/.claudio/workspaces/MetflixLabs/ajuda-corona/../ajuda-corona-worktrees/*/lessons/**/*)",
+      "Read(/Users/lucastavares/.claudio/workspaces/MetflixLabs/ajuda-corona/../ajuda-corona-worktrees/*/lessons/**/*)",
+      "Read(/Users/lucastavares/.claudio/workspaces/MetflixLabs/ajuda-corona/../ajuda-corona-worktrees/*/.claude/rules/*)",
+      "Bash(git worktree *)",
+      "Bash(git push *)",
+      "Bash(git fetch *)",
+      "Bash(git branch *)",
+      "Bash(git checkout *)",
+      "Bash(git stash *)",
+      "Bash(git merge *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git log *)",
+      "Bash(git diff *)",
+      "Bash(mkdir -p /Users/lucastavares/.claudio/workspaces/MetflixLabs/ajuda-corona/../ajuda-corona-worktrees/*)",
+      "Bash(ln -s *)",
+      "Bash(gh pr *)",
+      "Bash(gh issue *)",
+      "Bash(gh api *)",
+      "Bash(gh search *)"
+    ]
+  }
+}
